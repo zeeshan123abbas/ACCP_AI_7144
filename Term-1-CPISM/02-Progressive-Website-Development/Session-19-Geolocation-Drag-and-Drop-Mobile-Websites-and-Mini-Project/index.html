@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f766e">
+  <title>Karachi Explorer - Mini Project</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <h1>Karachi Explorer</h1>
+    <button id="themeBtn" aria-pressed="false">🌙 Dark</button>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Where am I?</h2>
+      <button id="locateBtn">Find my location</button>
+      <p id="locMsg" aria-live="polite"></p>
+      <iframe id="map" title="Map of your location" hidden loading="lazy"></iframe>
+    </section>
+
+    <section class="card">
+      <h2>Plan your day (drag places into your list)</h2>
+      <div class="dnd">
+        <ul id="places" class="zone" aria-label="Places">
+          <li draggable="true" id="p1">Clifton Beach</li>
+          <li draggable="true" id="p2">Quaid's Mausoleum</li>
+          <li draggable="true" id="p3">Frere Hall</li>
+          <li draggable="true" id="p4">Port Grand</li>
+        </ul>
+        <ul id="plan" class="zone" aria-label="My plan"></ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Search places</h2>
+      <input id="search" type="search" placeholder="Type to filter...">
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+  <footer>Mini project · HTML5 + CSS3 + JavaScript</footer>
+</body>
+</html>
