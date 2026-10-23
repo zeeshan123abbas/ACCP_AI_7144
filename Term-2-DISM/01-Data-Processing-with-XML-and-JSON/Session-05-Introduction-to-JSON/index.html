@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inventory Viewer</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    .card { border: 1px solid #ddd; border-radius: 8px; padding: 12px; margin: 8px 0; }
+    .out { color: #c0392b; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Inventory Viewer</h1>
+  <div id="list">Loading...</div>
+  <script>
+    // Serve this folder with: python -m http.server  (fetch does not work on file://)
+    fetch("inventory.json")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("list").innerHTML = data.products.map(p => `
+          <div class="card">
+            <strong>${p.name}</strong> (${p.sku})<br>
+            Rs. ${p.price.toLocaleString()} -
+            <span class="${p.inStock ? "" : "out"}">${p.inStock ? "In stock" : "Out of stock"}</span><br>
+            Tags: ${p.tags.join(", ")}
+          </div>`).join("");
+      })
+      .catch(err => {
+        document.getElementById("list").textContent = "Could not load data: " + err.message;
+      });
+  </script>
+</body>
+</html>
