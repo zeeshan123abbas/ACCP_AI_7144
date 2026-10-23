@@ -1,0 +1,22 @@
+### Register
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{ "name": "Sara", "email": "sara@example.com", "password": "StrongPass1" }
+
+### Login (copy the token)
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{ "email": "sara@example.com", "password": "StrongPass1" }
+
+### Create a task (replace TOKEN)
+POST http://localhost:3000/api/tasks
+Authorization: Bearer TOKEN
+Content-Type: application/json
+
+{ "title": "Finish Node.js assignment", "dueDate": "2026-12-01" }
+
+### List my tasks
+GET http://localhost:3000/api/tasks
+Authorization: Bearer TOKEN
