@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE library [
+  <!ELEMENT library (book+)>
+  <!ELEMENT book (title, author+, price, publisher?)>
+  <!ELEMENT title (#PCDATA)>
+  <!ELEMENT author (#PCDATA)>
+  <!ELEMENT price (#PCDATA)>
+  <!ELEMENT publisher (#PCDATA)>
+  <!ATTLIST book
+      isbn ID #REQUIRED
+      category (programming|database|design) "programming"
+      format CDATA #IMPLIED>
+  <!ATTLIST price currency CDATA #FIXED "PKR">
+  <!ENTITY pub "Karachi Tech Press">
+]>
+<library>
+  <book isbn="B978-1" category="programming" format="paperback">
+    <title>PHP for Beginners</title>
+    <author>Hamza Siddiqui</author>
+    <price currency="PKR">2200</price>
+    <publisher>&pub;</publisher>
+  </book>
+  <book isbn="B978-2" category="database">
+    <title>MySQL Made Simple</title>
+    <author>Nida Rauf</author>
+    <author>Usman Ali</author>
+    <price>1800</price>
+  </book>
+</library>
