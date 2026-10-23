@@ -1,0 +1,19 @@
+:root {
+  --brand: #0d6efd;
+  --radius: 10px;
+}
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f8f9fa;
+}
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
