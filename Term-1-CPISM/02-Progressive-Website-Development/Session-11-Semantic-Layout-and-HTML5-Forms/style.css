@@ -1,0 +1,22 @@
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: #f3f6fb; color: #1d2433; }
+.site-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background: #1f4e79; }
+.logo { color: white; font-weight: 800; text-decoration: none; }
+nav ul { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; }
+nav a { color: #dbe8ff; text-decoration: none; }
+nav a[aria-current="page"] { color: white; border-bottom: 2px solid #ffc107; }
+
+main { width: min(640px, 100% - 2rem); margin: 2rem auto; }
+.form { display: grid; gap: .5rem; background: white; padding: 1.5rem; border-radius: 14px; }
+fieldset { border: 1px solid #d6deea; border-radius: 10px; display: grid; gap: .5rem; margin: 0 0 1rem; }
+legend { font-weight: 700; padding: 0 .5rem; }
+input:not([type="radio"], [type="checkbox"], [type="range"], [type="color"]), textarea {
+  padding: .6rem; border: 1px solid #b8c4d6; border-radius: 8px; font: inherit;
+}
+input:focus, textarea:focus { outline: 3px solid #93c5fd; border-color: #2563eb; }
+input:user-invalid { border-color: crimson; background: #fff5f5; }
+input:user-valid { border-color: seagreen; }
+button { padding: .7rem 1.2rem; border: 0; border-radius: 8px; background: #1f4e79; color: white; font-weight: 700; cursor: pointer; }
+.secondary { background: #6b7280; }
+footer { text-align: center; padding: 1rem; }
+address { display: inline; font-style: normal; }
