@@ -1,0 +1,11 @@
+body { margin: 0; font-family: system-ui, sans-serif; background: #f1f5f9; }
+.app { width: min(560px, 100% - 2rem); margin: 2rem auto; background: white; padding: 1.5rem; border-radius: 16px; }
+#info { color: #64748b; font-size: .9rem; }
+form { display: flex; gap: .5rem; }
+input { flex: 1; padding: .6rem; border: 1px solid #cbd5e1; border-radius: 8px; font: inherit; }
+button { padding: .6rem 1rem; border: 0; border-radius: 8px; background: #2563eb; color: white; cursor: pointer; }
+ul { list-style: none; padding: 0; }
+li { display: flex; justify-content: space-between; align-items: center; padding: .6rem; border-bottom: 1px solid #e2e8f0; cursor: pointer; }
+li.done span { text-decoration: line-through; color: #94a3b8; }
+.delete { background: #ef4444; padding: .2rem .6rem; }
+pre { background: #0f172a; color: #a5f3fc; padding: 1rem; border-radius: 8px; overflow: auto; }
