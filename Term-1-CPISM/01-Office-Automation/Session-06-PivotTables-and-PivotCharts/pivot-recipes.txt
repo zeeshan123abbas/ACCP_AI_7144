@@ -1,0 +1,19 @@
+Pivot 1 - Sales by City
+  Rows: City            Values: Sum of Amount (Number, thousands separator)
+  Sort: largest to smallest
+
+Pivot 2 - City x Month
+  Rows: City   Columns: Date (group by Months)   Values: Sum of Amount
+
+Pivot 3 - Share of Category
+  Rows: Category        Values: Sum of Amount -> Show Values As % of Grand Total
+
+Pivot 4 - Salesperson performance
+  Rows: Salesperson     Values: Sum of Units, Sum of Amount, Count of Product
+  Calculated field: Commission = Amount * 0.02
+  Filter: Region
+
+Dashboard
+  Insert Slicers: Region, Category   Insert Timeline: Date
+  Report Connections: link both slicers to Pivots 1-4
+  PivotCharts: Column (Pivot 1), Line (Pivot 2), Doughnut (Pivot 3)
