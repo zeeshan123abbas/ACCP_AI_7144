@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas & Storage</title>
+  <script src="app.js" type="module"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 1.5rem auto; padding: 0 1rem; }
+    canvas { border: 1px solid #cbd5e1; border-radius: 12px; max-width: 100%; touch-action: none; }
+    .row { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin: .5rem 0; }
+  </style>
+</head>
+<body>
+  <h1>Canvas Drawing Pad</h1>
+  <div class="row">
+    <label>Colour <input type="color" id="color" value="#2563eb"></label>
+    <label>Size <input type="range" id="size" min="2" max="30" value="6"></label>
+    <button id="clear">Clear</button>
+    <button id="save">Save drawing</button>
+  </div>
+  <canvas id="pad" width="700" height="350" aria-label="Drawing area"></canvas>
+
+  <h2>Notes (localStorage) &amp; visits (sessionStorage)</h2>
+  <textarea id="note" rows="3" cols="50" placeholder="Type - it saves automatically"></textarea>
+  <p id="visits"></p>
+
+  <h2>Shared footer loaded with fetch</h2>
+  <div id="footer"></div>
+</body>
+</html>
