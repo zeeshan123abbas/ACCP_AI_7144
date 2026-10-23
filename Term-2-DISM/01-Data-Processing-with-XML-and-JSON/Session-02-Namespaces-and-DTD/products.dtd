@@ -1,0 +1,11 @@
+<!-- products.dtd : shared rules for product catalogues -->
+<!ELEMENT catalog (product*)>
+<!ELEMENT product (name, price, stock, tags?)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT stock (#PCDATA)>
+<!ELEMENT tags (tag+)>
+<!ELEMENT tag (#PCDATA)>
+<!ATTLIST product
+    code ID #REQUIRED
+    available (yes|no) "yes">
