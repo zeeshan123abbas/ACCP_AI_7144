@@ -1,0 +1,23 @@
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: linear-gradient(#eef4ff, #fff); }
+.wrap { width: min(760px, 100% - 2rem); margin: 2rem auto; background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 8px 30px rgb(0 0 0 / .08); }
+
+.grid-form { display: grid; gap: 1rem; }
+@media (min-width: 700px) {
+  .grid-form { grid-template-columns: 1fr 1fr; }
+  .full { grid-column: 1 / -1; }
+}
+
+.field { display: flex; flex-direction: column; gap: .3rem; }
+label { font-weight: 600; }
+input, select, textarea { font: inherit; padding: .6rem .7rem; border: 1px solid #c5cfdd; border-radius: 8px; }
+fieldset { border: 1px solid #c5cfdd; border-radius: 8px; display: flex; gap: 1rem; flex-wrap: wrap; }
+fieldset label { font-weight: 400; }
+
+.hint { color: #6b7280; }
+.field:has(:user-invalid) .hint { color: crimson; font-weight: 600; }
+.field:has(:user-invalid) input { border-color: crimson; }
+.field:has(:user-valid) input { border-color: seagreen; }
+
+button { padding: .9rem; border: 0; border-radius: 10px; background: #2563eb; color: white; font-size: 1rem; font-weight: 700; cursor: pointer; }
+button:hover { background: #1d4ed8; }
