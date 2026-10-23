@@ -1,0 +1,31 @@
+{
+  "store": "TechZone Karachi",
+  "updated": "2026-03-15T09:30:00Z",
+  "currency": "PKR",
+  "products": [
+    {
+      "sku": "TZ-1001",
+      "name": "Wireless Mouse",
+      "price": 1500,
+      "inStock": true,
+      "tags": ["accessory", "usb"],
+      "supplier": { "name": "Alpha Traders", "phone": "021-111-222" }
+    },
+    {
+      "sku": "TZ-1002",
+      "name": "Mechanical Keyboard",
+      "price": 8500,
+      "inStock": false,
+      "tags": ["accessory", "gaming"],
+      "supplier": { "name": "Beta Imports", "phone": null }
+    },
+    {
+      "sku": "TZ-1003",
+      "name": "27-inch Monitor",
+      "price": 52000,
+      "inStock": true,
+      "tags": ["display"],
+      "supplier": { "name": "Alpha Traders", "phone": "021-111-222" }
+    }
+  ]
+}
