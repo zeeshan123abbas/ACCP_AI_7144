@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Classifier (TensorFlow.js)</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 600px; margin: 30px auto; }
+    img { max-width: 100%; max-height: 320px; display: block; margin: 10px 0; }
+    li { margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <h1>What is in this picture?</h1>
+  <p id="status">Loading model...</p>
+  <input type="file" id="file" accept="image/*" disabled>
+  <img id="preview" alt="">
+  <ol id="results"></ol>
+
+  <script>
+    let model;
+    const status = document.getElementById("status");
+
+    mobilenet.load().then(m => {
+      model = m;
+      status.textContent = `Model ready (backend: ${tf.getBackend()}). Choose an image.`;
+      document.getElementById("file").disabled = false;
+    }).catch(err => (status.textContent = "Model failed to load: " + err.message));
+
+    document.getElementById("file").addEventListener("change", e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const img = document.getElementById("preview");
+      img.src = URL.createObjectURL(file);
+      img.onload = async () => {
+        status.textContent = "Thinking...";
+        const t = performance.now();
+        const predictions = await model.classify(img, 3);
+        status.textContent = `Done in ${Math.round(performance.now() - t)} ms`;
+        document.getElementById("results").innerHTML = predictions
+          .map(p => `<li>${p.className} — ${(p.probability * 100).toFixed(1)}%</li>`)
+          .join("");
+      };
+    });
+  </script>
+</body>
+</html>
