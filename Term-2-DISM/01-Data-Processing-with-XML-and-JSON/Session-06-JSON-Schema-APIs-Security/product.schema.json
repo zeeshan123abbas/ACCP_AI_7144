@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Product",
+  "type": "object",
+  "required": ["sku", "name", "price", "inStock"],
+  "properties": {
+    "sku": { "type": "string", "pattern": "^TZ-[0-9]{4}$" },
+    "name": { "type": "string", "minLength": 3, "maxLength": 60 },
+    "price": { "type": "number", "minimum": 0 },
+    "inStock": { "type": "boolean" },
+    "category": { "enum": ["accessory", "display", "storage", "networking"] },
+    "tags": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+  },
+  "additionalProperties": false
+}
