@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Reusable simple types -->
+  <xs:simpleType name="MarksType">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="StudentIdType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="STU-[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="GenderType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="male"/>
+      <xs:enumeration value="female"/>
+      <xs:enumeration value="other"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Complex type for one subject result -->
+  <xs:complexType name="SubjectType">
+    <xs:simpleContent>
+      <xs:extension base="MarksType">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- Complex type for a student -->
+  <xs:complexType name="StudentType">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="gender" type="GenderType"/>
+      <xs:element name="dob" type="xs:date"/>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="subject" type="SubjectType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="StudentIdType" use="required"/>
+    <xs:attribute name="active" type="xs:boolean" default="true"/>
+  </xs:complexType>
+
+  <!-- Root element -->
+  <xs:element name="students">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="student" type="StudentType" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
