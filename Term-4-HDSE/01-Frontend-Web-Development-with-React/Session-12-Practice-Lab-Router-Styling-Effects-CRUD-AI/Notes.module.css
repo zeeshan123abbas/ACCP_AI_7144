@@ -1,0 +1,8 @@
+.nav { display: flex; gap: 16px; padding: 12px 24px; background: #212529; }
+.nav a { color: #adb5bd; text-decoration: none; }
+.nav a.active { color: white; font-weight: 700; }
+.main { max-width: 720px; margin: 0 auto; padding: 24px; font-family: system-ui; }
+.card { background: #fff; border: 1px solid #dee2e6; border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.form { display: grid; gap: 10px; }
+.error { color: crimson; }
+.ai { background: #e7f1ff; padding: 10px; border-radius: 8px; }
