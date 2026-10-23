@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Performance Lab</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 20px auto; }
+    #spinner { display: inline-block; animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .gallery img { width: 100%; height: 160px; object-fit: cover; background: #eee; opacity: 0; transition: opacity .4s; }
+    .gallery img.loaded { opacity: 1; }
+    #status { position: sticky; top: 0; background: #fff; padding: 6px 0; }
+  </style>
+</head>
+<body>
+  <h1>Performance Lab <span id="spinner">⚙️</span></h1>
+  <p>If the gear stops spinning, the main thread is blocked.</p>
+
+  <h2>1. Heavy work</h2>
+  <button id="mainBtn">Count primes on MAIN thread</button>
+  <button id="workerBtn">Count primes in WORKER</button>
+  <p id="primeOut"></p>
+
+  <h2>2. Debounce vs throttle</h2>
+  <input id="search" placeholder="Type to search (debounced 400ms)">
+  <p id="searchOut"></p>
+  <p id="status">Scroll events handled (throttled 200ms): <b id="scrollCount">0</b> / raw: <b id="rawCount">0</b></p>
+
+  <h2>3. Lazy-loaded gallery</h2>
+  <div class="gallery" id="gallery"></div>
+
+  <script>
+    const LIMIT = 8_000_000;
+    const out = document.getElementById("primeOut");
+
+    // ---- Heavy work: main thread vs worker ----
+    function countPrimes(limit) {
+      let count = 0;
+      for (let n = 2; n <= limit; n++) {
+        let prime = true;
+        for (let d = 2; d * d <= n; d++) if (n % d === 0) { prime = false; break; }
+        if (prime) count++;
+      }
+      return count;
+    }
+    document.getElementById("mainBtn").onclick = () => {
+      out.textContent = "Working on main thread... (page frozen)";
+      setTimeout(() => {
+        const t = performance.now();
+        const r = countPrimes(LIMIT);
+        out.textContent = `Main thread: ${r} primes in ${Math.round(performance.now() - t)} ms`;
+      }, 50);
+    };
+    const worker = new Worker("worker.js");
+    worker.onmessage = e => (out.textContent = `Worker: ${e.data.result} primes in ${e.data.ms} ms (page stayed smooth)`);
+    document.getElementById("workerBtn").onclick = () => {
+      out.textContent = "Working in worker... try scrolling!";
+      worker.postMessage(LIMIT);
+    };
+
+    // ---- Debounce and throttle ----
+    function debounce(fn, delay) {
+      let timer;
+      return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), delay);
+      };
+    }
+    function throttle(fn, interval) {
+      let last = 0;
+      return (...args) => {
+        const now = Date.now();
+        if (now - last >= interval) {
+          last = now;
+          fn(...args);
+        }
+      };
+    }
+    let searches = 0;
+    document.getElementById("search").addEventListener("input", debounce(e => {
+      searches++;
+      document.getElementById("searchOut").textContent = `Search #${searches} for "${e.target.value}"`;
+    }, 400));
+
+    let raw = 0, handled = 0;
+    window.addEventListener("scroll", () => (document.getElementById("rawCount").textContent = ++raw), { passive: true });
+    window.addEventListener("scroll", throttle(() => (document.getElementById("scrollCount").textContent = ++handled), 200), { passive: true });
+
+    // ---- Lazy loading with IntersectionObserver ----
+    const gallery = document.getElementById("gallery");
+    for (let i = 1; i <= 30; i++) {
+      const img = document.createElement("img");
+      img.alt = `Photo ${i}`;
+      img.dataset.src = `https://picsum.photos/seed/accp${i}/400/300`;
+      gallery.append(img);
+    }
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.onload = () => img.classList.add("loaded");
+        obs.unobserve(img);
+        console.log("Loaded", img.alt);
+      });
+    }, { rootMargin: "200px" });
+    gallery.querySelectorAll("img").forEach(img => observer.observe(img));
+  </script>
+</body>
+</html>
