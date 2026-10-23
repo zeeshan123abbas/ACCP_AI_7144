@@ -1,0 +1,54 @@
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: #eef2f7; }
+
+/* ---- Page layout with Grid areas (mobile first) ---- */
+.layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "sidebar"
+    "main"
+    "footer";
+}
+.header  { grid-area: header; }
+.sidebar { grid-area: sidebar; background: #dbe4f0; padding: 1rem; }
+.main    { grid-area: main; padding: 1rem; }
+.footer  { grid-area: footer; background: #1f2937; color: white; text-align: center; padding: 1rem; }
+
+@media (min-width: 768px) {
+  .layout {
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "header header"
+      "sidebar main"
+      "footer footer";
+  }
+}
+
+/* ---- Flexbox header ---- */
+.header {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem;
+  background: #1f4e79; color: white; padding: .75rem 1rem;
+}
+.menu { display: flex; gap: 1rem; }
+.menu a { color: white; text-decoration: none; }
+
+/* ---- Flex stats with grow ---- */
+.stats { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.stat { flex: 1 1 150px; background: white; padding: 1rem; border-radius: 10px; display: flex; flex-direction: column; }
+.stat b { font-size: 1.6rem; color: #1f4e79; }
+.grow { flex-grow: 2; }
+
+/* ---- Responsive card grid (no media query needed) ---- */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+.card { background: white; padding: 2rem 1rem; border-radius: 10px; text-align: center; font-weight: 600; }
+.wide { grid-column: span 2; background: #fff7d6; }
+
+/* ---- Centring ---- */
+.center-box {
+  margin-top: 1rem; height: 150px; border: 2px dashed #1f4e79; border-radius: 10px;
+  display: flex; justify-content: center; align-items: center;
+}
