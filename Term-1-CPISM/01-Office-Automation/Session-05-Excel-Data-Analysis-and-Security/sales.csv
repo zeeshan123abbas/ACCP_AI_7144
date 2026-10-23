@@ -1,0 +1,16 @@
+OrderID,Date,City,Product,Units,UnitPrice
+1001,2026-01-03,Karachi,Laptop,2,150000
+1002,2026-01-05,Lahore,Mouse,10,1500
+1003,2026-01-08,Karachi,Keyboard,5,3500
+1004,2026-01-12,Islamabad,Laptop,1,155000
+1005,2026-01-15,Karachi,Monitor,3,42000
+1006,2026-02-02,Lahore,Laptop,2,148000
+1007,2026-02-06,Karachi,Mouse,15,1400
+1008,2026-02-09,Islamabad,Monitor,2,43000
+1009,2026-02-14,Lahore,Keyboard,8,3300
+1010,2026-02-20,Karachi,Laptop,3,149000
+1011,2026-03-01,Islamabad,Mouse,12,1500
+1012,2026-03-04,Karachi,Monitor,4,41000
+1012,2026-03-04,Karachi,Monitor,4,41000
+1013,2026-03-10,Lahore,Monitor,1,44000
+1014,2026-03-18,Karachi,Keyboard,6,3400
