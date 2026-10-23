@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is intentionally BROKEN. Fix it in Lab Task 2. -->
+<products>
+  <product id=P1>
+    <Name>Wireless Mouse</name>
+    <price>1500
+    <stock>25</stock>
+  </product>
+  <product id="P2" id="P3">
+    <name>Keyboard & Mouse Combo</name>
+    <price>3200</price>
+  </product>
+</products>
+<extra>Second root</extra>
