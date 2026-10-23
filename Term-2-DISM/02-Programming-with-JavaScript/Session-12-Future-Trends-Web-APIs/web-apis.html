@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modern Web APIs</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 30px auto; }
+    section { border: 1px solid #ddd; border-radius: 10px; padding: 12px; margin: 12px 0; }
+    textarea { width: 100%; height: 80px; }
+    .na { color: #999; }
+  </style>
+</head>
+<body>
+  <h1>Modern Web APIs Playground</h1>
+
+  <section>
+    <h2>🎤 Voice to text</h2>
+    <button id="listen">Start listening</button>
+    <select id="lang"><option value="en-US">English</option><option value="ur-PK">Urdu</option></select>
+    <textarea id="transcript" placeholder="Your speech appears here"></textarea>
+  </section>
+
+  <section>
+    <h2>🔊 Text to voice · 📋 Copy · 📤 Share</h2>
+    <button id="speak">Speak text</button>
+    <button id="copy">Copy text</button>
+    <button id="share">Share text</button>
+    <p id="msg"></p>
+  </section>
+
+  <section>
+    <h2>📦 Dynamic import</h2>
+    <button id="stats">Load text statistics module</button>
+    <pre id="statsOut"></pre>
+  </section>
+
+  <script type="module">
+    const $ = id => document.getElementById(id);
+    const text = () => $("transcript").value.trim();
+    const say = m => ($("msg").textContent = m);
+
+    // ---- Speech recognition (feature detection) ----
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) {
+      $("listen").disabled = true;
+      $("listen").textContent = "Speech recognition not supported in this browser";
+    } else {
+      const rec = new SR();
+      rec.interimResults = true;
+      rec.continuous = false;
+      rec.onresult = e => ($("transcript").value = [...e.results].map(r => r[0].transcript).join(" "));
+      rec.onerror = e => say("Speech error: " + e.error);
+      rec.onend = () => ($("listen").textContent = "Start listening");
+      $("listen").onclick = () => {
+        rec.lang = $("lang").value;
+        rec.start();
+        $("listen").textContent = "Listening...";
+      };
+    }
+
+    // ---- Speech synthesis ----
+    $("speak").onclick = () => {
+      if (!text()) return say("Type or say something first");
+      speechSynthesis.speak(new SpeechSynthesisUtterance(text()));
+    };
+
+    // ---- Clipboard ----
+    $("copy").onclick = async () => {
+      try {
+        await navigator.clipboard.writeText(text());
+        say("Copied to clipboard ✔");
+      } catch {
+        say("Clipboard permission denied");
+      }
+    };
+
+    // ---- Web Share ----
+    $("share").onclick = async () => {
+      if (!navigator.share) return say("Web Share not supported here (try on a phone)");
+      try {
+        await navigator.share({ title: "My note", text: text() });
+      } catch (err) {
+        if (err.name !== "AbortError") say("Share failed: " + err.message);
+      }
+    };
+
+    // ---- Dynamic import ----
+    $("stats").onclick = async () => {
+      const { analyze } = await import("./text-stats.js");
+      $("statsOut").textContent = JSON.stringify(analyze(text()), null, 2);
+    };
+  </script>
+</body>
+</html>
