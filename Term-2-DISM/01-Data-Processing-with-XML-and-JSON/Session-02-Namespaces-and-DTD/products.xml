@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog SYSTEM "products.dtd">
+<catalog>
+  <product code="P100">
+    <name>USB-C Charger</name>
+    <price>2500</price>
+    <stock>40</stock>
+    <tags><tag>mobile</tag><tag>accessory</tag></tags>
+  </product>
+  <product code="P101" available="no">
+    <name>Laptop Stand</name>
+    <price>4200</price>
+    <stock>0</stock>
+  </product>
+</catalog>
