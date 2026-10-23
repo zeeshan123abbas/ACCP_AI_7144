@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" type="module"></script>
+</head>
+<body>
+  <main class="app">
+    <h1>Expense Tracker</h1>
+    <form id="form" class="row">
+      <input id="title" placeholder="What did you spend on?" required aria-label="Title">
+      <input id="amount" type="number" min="1" step="1" placeholder="Rs" required aria-label="Amount">
+      <select id="category" aria-label="Category">
+        <option>Food</option><option>Transport</option><option>Bills</option><option>Other</option>
+      </select>
+      <button>Add</button>
+    </form>
+    <p class="total">Total: <strong id="total">Rs 0</strong></p>
+    <canvas id="chart" width="600" height="220" aria-label="Spending by category chart"></canvas>
+    <ul id="list"></ul>
+  </main>
+</body>
+</html>
