@@ -1,0 +1,13 @@
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: #f8fafc; color: #0f172a; }
+.app { width: min(680px, 100% - 2rem); margin: 2rem auto; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 24px rgb(0 0 0 / .06); }
+.row { display: grid; gap: .5rem; grid-template-columns: 1fr; }
+@media (min-width: 600px) { .row { grid-template-columns: 2fr 1fr 1fr auto; } }
+input, select, button { font: inherit; padding: .6rem; border-radius: 8px; border: 1px solid #cbd5e1; }
+button { background: #2563eb; color: white; border: 0; cursor: pointer; }
+.total { font-size: 1.2rem; }
+canvas { width: 100%; height: auto; }
+ul { list-style: none; padding: 0; }
+li { display: grid; grid-template-columns: 1fr auto auto auto; gap: .75rem; align-items: center; padding: .5rem 0; border-bottom: 1px solid #e2e8f0; }
+.cat { font-size: .8rem; background: #e0e7ff; padding: .1rem .5rem; border-radius: 999px; }
+.del { background: #ef4444; padding: .2rem .55rem; }
