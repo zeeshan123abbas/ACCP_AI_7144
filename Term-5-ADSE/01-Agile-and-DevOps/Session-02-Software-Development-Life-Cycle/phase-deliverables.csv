@@ -1,0 +1,8 @@
+phase,key_question,main_output,owner
+Planning,Should we build it?,Feasibility report & project plan,Project Manager
+Requirements,What must it do?,SRS document,Business Analyst
+Design,How will it work?,Architecture & database design,Solution Architect
+Implementation,Build it,Source code in Git,Developers
+Testing,Does it work?,Test report & bug list,QA Engineer
+Deployment,Deliver it,Release notes & live system,DevOps Engineer
+Maintenance,Keep it useful,Patches & new versions,Support Team
