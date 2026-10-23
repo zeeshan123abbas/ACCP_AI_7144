@@ -1,0 +1,13 @@
+# Windows: open "MySQL 8.x Command Line Client" or a terminal in
+#   C:\Program Files\MySQL\MySQL Server 8.0\bin
+# XAMPP: C:\xampp\mysql\bin
+
+mysql -u root -p                       # connect to the local server, prompts for password
+mysql -h 127.0.0.1 -P 3306 -u root -p  # explicit host and port
+
+# Inside the mysql> prompt:
+STATUS;                                 -- connection details
+SHOW DATABASES;
+USE institute_db;
+SOURCE C:/path/to/first-queries.sql;    -- run a script file
+EXIT;
