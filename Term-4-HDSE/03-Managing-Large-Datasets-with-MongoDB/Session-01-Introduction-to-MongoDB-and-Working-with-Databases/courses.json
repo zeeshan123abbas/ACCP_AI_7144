@@ -1,0 +1,6 @@
+[
+  { "code": "REACT", "title": "Frontend Web Development with React", "sessions": 12 },
+  { "code": "NODE", "title": "Server-side Programming with Node.js", "sessions": 12 },
+  { "code": "MONGO", "title": "Managing Large Datasets with MongoDB", "sessions": 16 },
+  { "code": "AZURE", "title": "Developing Microsoft Azure Applications", "sessions": 12 }
+]
