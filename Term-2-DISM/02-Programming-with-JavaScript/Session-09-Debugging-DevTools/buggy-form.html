@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buggy Order Form</title>
+  <style>body { font-family: system-ui, sans-serif; max-width: 420px; margin: 40px auto; } label { display:block; margin-top:10px; }</style>
+</head>
+<body>
+  <h1>Order Form (contains 4 bugs)</h1>
+  <form id="orderForm">
+    <label>Product price <input id="price" type="number" value="1500"></label>
+    <label>Quantity <input id="qty" type="number" value="2"></label>
+    <label>Discount code <input id="code" placeholder="SAVE10"></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <p id="result"></p>
+  <script src="buggy-form.js"></script>
+</body>
+</html>
