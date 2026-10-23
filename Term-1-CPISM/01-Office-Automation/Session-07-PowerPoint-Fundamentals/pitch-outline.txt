@@ -1,0 +1,18 @@
+Smart Attendance System
+	Team: Byte Builders - Batch 2601
+The Problem
+	Paper registers waste 10 minutes per class
+	Proxy attendance is common
+Our Solution
+	QR code check-in from the student's phone
+	Live dashboard for teachers
+How It Works
+	Teacher shows a QR code
+	Student scans within 60 seconds
+	Record saved to the cloud
+Benefits
+	Saves time
+	Accurate reports for parents
+Next Steps
+	Pilot in two classes
+	Collect feedback
