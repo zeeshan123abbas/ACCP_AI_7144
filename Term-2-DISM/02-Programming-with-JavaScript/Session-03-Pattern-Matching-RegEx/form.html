@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Regex Form Validation</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 420px; margin: 40px auto; }
+    label { display: block; margin-top: 12px; }
+    input { width: 100%; padding: 8px; box-sizing: border-box; }
+    .ok { border: 2px solid #2a9d8f; }
+    .bad { border: 2px solid #e63946; }
+    small { color: #e63946; }
+  </style>
+</head>
+<body>
+  <h1>Admission Form</h1>
+  <form id="f" novalidate>
+    <label>Email <input name="email" data-pattern="^[\w.+-]+@[\w-]+\.[\w.-]+$"></label>
+    <small></small>
+    <label>Mobile (03XX-XXXXXXX) <input name="mobile" data-pattern="^03\d{2}-?\d{7}$"></label>
+    <small></small>
+    <label>CNIC (XXXXX-XXXXXXX-X) <input name="cnic" data-pattern="^\d{5}-\d{7}-\d$"></label>
+    <small></small>
+    <button>Submit</button>
+  </form>
+  <script>
+    const form = document.getElementById("f");
+    function check(input) {
+      const ok = new RegExp(input.dataset.pattern).test(input.value.trim());
+      input.className = ok ? "ok" : "bad";
+      input.parentElement.nextElementSibling.textContent = ok ? "" : `Invalid ${input.name}`;
+      return ok;
+    }
+    form.addEventListener("input", e => check(e.target));
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const allOk = [...form.querySelectorAll("input")].map(check).every(Boolean);
+      alert(allOk ? "Form is valid!" : "Please fix the highlighted fields");
+    });
+  </script>
+</body>
+</html>
