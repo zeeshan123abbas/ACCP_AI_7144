@@ -1,0 +1,15 @@
+Smart Campus Report
+Introduction
+Colleges in Pakistan are adopting digital tools to manage classes, attendance and fees.
+Digital Attendance
+QR codes and face recognition reduce manual registers and save teachers time.
+Online Classrooms
+Google Classroom and Microsoft Teams let students submit work and get feedback quickly.
+Challenges
+Internet load-shedding, device cost and training needs remain the biggest barriers.
+Tool | Purpose | Cost
+Microsoft Teams | Classes and chat | Free for education
+Google Classroom | Assignments | Free
+Moodle | Learning management | Open source
+Conclusion
+With planning and training, a smart campus improves learning and transparency.
