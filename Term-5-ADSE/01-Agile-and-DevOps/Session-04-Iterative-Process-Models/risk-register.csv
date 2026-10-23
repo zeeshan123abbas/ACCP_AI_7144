@@ -1,0 +1,5 @@
+id,risk,category,probability(1-5),impact(1-5),score,mitigation,owner
+R1,Payment gateway API changes,Technical,3,5,15,Wrap gateway in adapter class; monitor changelog,Tech Lead
+R2,Key developer leaves,People,2,4,8,Pair programming; documentation,Project Manager
+R3,Users reject new UI,Requirements,3,4,12,Build clickable prototype and test with 5 users,UX Designer
+R4,Server cost exceeds budget,Cost,2,3,6,Load-test early; use auto-scaling limits,DevOps
