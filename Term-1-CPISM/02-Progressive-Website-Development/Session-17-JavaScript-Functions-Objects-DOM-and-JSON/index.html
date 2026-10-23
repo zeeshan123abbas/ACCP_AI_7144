@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" type="module"></script>
+</head>
+<body>
+  <main class="app">
+    <h1>Task Manager</h1>
+    <p id="info"></p>
+    <form id="taskForm">
+      <input id="taskInput" placeholder="New task..." required aria-label="New task">
+      <button>Add</button>
+    </form>
+    <ul id="tasks"></ul>
+    <p id="stats"></p>
+    <button id="exportBtn" type="button">Show JSON</button>
+    <pre id="json"></pre>
+  </main>
+</body>
+</html>
