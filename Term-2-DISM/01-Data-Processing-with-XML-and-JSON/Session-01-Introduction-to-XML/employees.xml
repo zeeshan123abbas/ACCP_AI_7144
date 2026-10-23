@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Employee list for a small software house -->
+<company name="CodeCraft Solutions" city="Karachi">
+  <employee id="E101" status="active">
+    <name>Ayesha Khan</name>
+    <designation>Frontend Developer</designation>
+    <salary currency="PKR">180000</salary>
+    <joined>2024-03-15</joined>
+    <skills>
+      <skill>HTML</skill>
+      <skill>CSS</skill>
+      <skill>JavaScript</skill>
+    </skills>
+  </employee>
+  <employee id="E102" status="active">
+    <name>Bilal Ahmed</name>
+    <designation>Backend Developer</designation>
+    <salary currency="PKR">210000</salary>
+    <joined>2023-11-01</joined>
+    <skills>
+      <skill>PHP</skill>
+      <skill>MySQL</skill>
+    </skills>
+  </employee>
+  <employee id="E103" status="on-leave">
+    <name>Sara &amp; Co. Intern</name>
+    <designation>QA Intern</designation>
+    <salary currency="PKR">45000</salary>
+    <joined>2025-07-01</joined>
+    <skills/>
+    <notes><![CDATA[Test rule: salary < 50000 && status = "intern"]]></notes>
+  </employee>
+</company>
