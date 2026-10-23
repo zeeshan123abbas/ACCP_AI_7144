@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSON API Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    body.dark { background: #1e1e1e; color: #eee; }
+    .user { border: 1px solid #999; border-radius: 6px; padding: 10px; margin: 6px 0; }
+    #status { font-style: italic; }
+  </style>
+</head>
+<body>
+  <h1>Users from a REST API</h1>
+  <label><input type="checkbox" id="darkToggle"> Dark mode (saved as JSON)</label>
+  <p><button id="loadBtn">Load users</button> <span id="status"></span></p>
+  <div id="users"></div>
+
+  <script>
+    // ---------- Settings stored as JSON in localStorage ----------
+    const defaults = { theme: "light", lastLoaded: null };
+    const settings = JSON.parse(localStorage.getItem("settings")) ?? defaults;
+
+    function saveSettings() {
+      localStorage.setItem("settings", JSON.stringify(settings));
+    }
+    function applyTheme() {
+      document.body.classList.toggle("dark", settings.theme === "dark");
+      document.getElementById("darkToggle").checked = settings.theme === "dark";
+    }
+    document.getElementById("darkToggle").addEventListener("change", e => {
+      settings.theme = e.target.checked ? "dark" : "light";
+      saveSettings();
+      applyTheme();
+    });
+    applyTheme();
+
+    // ---------- Fetch JSON from a public test API ----------
+    async function loadUsers() {
+      const status = document.getElementById("status");
+      const box = document.getElementById("users");
+      status.textContent = "Loading...";
+      box.innerHTML = "";
+      try {
+        const res = await fetch("https://jsonplaceholder.typicode.com/users");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        console.log("Content-Type:", res.headers.get("Content-Type"));
+        const users = await res.json();
+        users.forEach(u => {
+          const div = document.createElement("div");
+          div.className = "user";
+          // textContent avoids XSS: API text is never treated as HTML
+          div.textContent = `${u.name} - ${u.email} - ${u.address.city}`;
+          box.appendChild(div);
+        });
+        settings.lastLoaded = new Date().toISOString();
+        saveSettings();
+        status.textContent = `Loaded ${users.length} users at ${settings.lastLoaded}`;
+      } catch (err) {
+        status.textContent = "Failed: " + err.message;
+      }
+    }
+    document.getElementById("loadBtn").addEventListener("click", loadUsers);
+  </script>
+</body>
+</html>
