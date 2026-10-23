@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="students.xsd">
+  <student id="STU-0001">
+    <name>Hira Baig</name>
+    <gender>female</gender>
+    <dob>2005-08-21</dob>
+    <email>hira@example.com</email>
+    <subject name="XML">91</subject>
+    <subject name="MySQL">84</subject>
+  </student>
+  <student id="STU-0002" active="false">
+    <name>Danish Iqbal</name>
+    <gender>male</gender>
+    <dob>2004-01-10</dob>
+    <subject name="XML">77</subject>
+  </student>
+</students>
