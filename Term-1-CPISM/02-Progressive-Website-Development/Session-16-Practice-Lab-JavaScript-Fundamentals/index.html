@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Number</title>
+  <script src="game.js" defer></script>
+  <style>
+    body { font-family: system-ui, sans-serif; display: grid; place-items: center; min-height: 100svh; margin: 0; background: #0f172a; color: #e2e8f0; }
+    .card { background: #1e293b; padding: 2rem; border-radius: 16px; width: min(420px, 92vw); text-align: center; }
+    input, button { font: inherit; padding: .6rem; border-radius: 8px; border: 0; }
+    button { background: #22c55e; color: #052e16; font-weight: 700; cursor: pointer; }
+    #msg { min-height: 1.5em; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Guess the Number</h1>
+    <p>I am thinking of a number between 1 and 100. You have 7 tries.</p>
+    <form id="guessForm">
+      <input id="guess" type="number" min="1" max="100" required aria-label="Your guess">
+      <button>Guess</button>
+    </form>
+    <p id="msg" aria-live="polite"></p>
+    <p>Tries left: <strong id="left">7</strong></p>
+    <p>Previous: <span id="history">-</span></p>
+    <button id="restart" hidden>Play again</button>
+  </main>
+</body>
+</html>
