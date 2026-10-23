@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order xmlns="https://shop.example.pk/order"
+       xmlns:cust="https://shop.example.pk/customer">
+  <cust:customer>
+    <cust:name>Fahad Qureshi</cust:name>
+    <cust:city>Karachi</cust:city>
+  </cust:customer>
+  <item sku="P100" qty="2"/>
+  <item sku="P101" qty="1"/>
+  <total>9200</total>
+</order>
