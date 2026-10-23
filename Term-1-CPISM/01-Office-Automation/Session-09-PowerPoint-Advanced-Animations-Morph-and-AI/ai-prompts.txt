@@ -1,0 +1,14 @@
+PROMPT 1 (outline)
+Create an 8-slide outline for first-year IT students titled "Staying Safe Online".
+Audience: 17-20 years old. Tone: friendly. Each slide: title + 3 short bullets.
+
+PROMPT 2 (speaker notes)
+Write 60-word speaker notes for this slide: <paste slide text>
+
+PROMPT 3 (improve)
+Rewrite these bullets to be under 6 words each, keep meaning: <paste bullets>
+
+VERIFY BEFORE USING
+- Are facts and numbers correct? (check an official source)
+- Is the image free to use? (Insert > Stock Images is safe)
+- Did I remove any personal or private data?
