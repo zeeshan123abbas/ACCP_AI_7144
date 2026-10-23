@@ -1,0 +1,81 @@
+/* Reset: easier sizing */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  color: #222;
+  background-color: #f6f8fa;
+}
+
+/* Sticky header with nested (descendant) selector */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: #1f4e79;
+  color: white;
+  padding: 0.75rem 1.5rem;
+}
+.site-header nav a { color: #cfe3ff; margin-right: 1rem; }
+
+/* Link states in LVHA order */
+a:link    { color: #0a58ca; }
+a:visited { color: #6f42c1; }
+a:hover   { text-decoration: none; }
+a:active  { color: crimson; }
+a:focus-visible { outline: 3px solid orange; }
+
+main { max-width: 800px; margin: 0 auto; padding: 1rem; }
+
+.intro {
+  font-size: 1.25rem;
+  text-indent: 2em;
+  text-align: justify;
+}
+.highlight { background: yellow; font-weight: bold; }
+
+/* Box model */
+.box {
+  width: 300px;
+  padding: 20px;
+  border: 5px dashed #1f4e79;
+  margin: 20px 0;
+  background: white;
+}
+
+/* Positioning */
+.card { position: relative; background: white; padding: 1rem; border-radius: 8px; display: flow-root; }
+.badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: crimson;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+.float-left { float: left; margin: 0 1rem 0.5rem 0; border-radius: 50%; }
+
+/* Pseudo-classes for zebra list */
+.list li:nth-child(odd) { background: #e9f2ff; }
+.list li:hover { padding-left: 0.5rem; }
+
+/* Specificity demo: ID beats class */
+#position h2 { color: darkgreen; }
+.card p::first-line { font-weight: 600; }
+
+.to-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  background: #1f4e79;
+  color: white !important;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+}
