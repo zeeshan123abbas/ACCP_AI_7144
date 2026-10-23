@@ -1,0 +1,42 @@
+:root {
+  --brand: #6f4e37;
+  --brand-light: #c8a27a;
+  --dark: #2b2118;
+  --light: #fdf8f3;
+  --radius: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; color: var(--dark); background: var(--light); line-height: 1.6; }
+
+.header {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.75rem 1.5rem; background: var(--dark);
+}
+.logo { color: var(--brand-light); font-weight: 800; font-size: 1.4rem; text-decoration: none; }
+.nav a { color: white; text-decoration: none; margin-left: 1rem; padding: 0.25rem 0.5rem; border-radius: 6px; }
+.nav a:hover, .nav a.active { background: var(--brand); }
+
+.hero { text-align: center; padding: 4rem 1rem; background: var(--brand); color: white; }
+.hero h1 { margin: 0 0 0.5rem; font-size: clamp(1.8rem, 5vw, 3rem); }
+.btn {
+  display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem;
+  background: var(--brand-light); color: var(--dark); font-weight: 700;
+  border-radius: var(--radius); text-decoration: none; transition: transform 0.2s;
+}
+.btn:hover { transform: translateY(-3px); }
+
+main { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+.card {
+  position: relative;
+  display: inline-block; width: 260px; margin: 0 1rem 1rem 0;
+  padding: 1.25rem; background: white; border: 1px solid #eadfd4; border-radius: var(--radius);
+}
+.card h3 { margin: 0; }
+.price { color: var(--brand); font-weight: 700; margin: 0.25rem 0 0; }
+.featured { border: 2px solid var(--brand); }
+.tag { position: absolute; top: -12px; left: 12px; background: crimson; color: white; font-size: 0.75rem; padding: 2px 10px; border-radius: 999px; }
+.lead { font-size: 1.15rem; text-indent: 1.5em; }
+
+.footer { background: var(--dark); color: #ddd; text-align: center; padding: 1rem; }
+.footer a { color: var(--brand-light); }
