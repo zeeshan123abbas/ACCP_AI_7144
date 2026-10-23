@@ -1,0 +1,14 @@
+ EXCEL
+ 1. Import kpi.csv, Format as Table, add Achievement % (=[@Actual]/[@Target])
+ 2. Insert > Combo chart: Actual = Clustered Column, Target = Line
+ 3. Add =AVERAGE(), =MAX() and an XLOOKUP that returns the month with the max Actual:
+    =XLOOKUP(MAX(C2:C7),C2:C7,A2:A7)
+ 4. Save as kpi-report.xlsx
+
+ POWERPOINT
+ 5. New deck, apply a theme, title slide "Half-Year Admissions Review"
+ 6. Copy the chart in Excel -> in PowerPoint: Paste Special > Keep Source Formatting & Link Data
+ 7. Write an insight title, e.g. "We beat target in March and May"
+ 8. Change one value in Excel, return to PowerPoint: Chart Design > Refresh Data
+ 9. Add a summary table slide and a "Recommendations" slide
+10. Export PDF
