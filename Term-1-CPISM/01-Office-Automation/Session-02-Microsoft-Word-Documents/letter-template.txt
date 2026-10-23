@@ -1,0 +1,15 @@
+Aptech Learning - Student Tech Society
+Karachi
+
+«Title» «FirstName» «LastName»
+«Organisation», «City»
+
+Dear «FirstName»,
+
+We are delighted to invite you to our Coding Meetup on Saturday at 3:00 PM.
+Your experience at «Organisation» will inspire our students.
+
+Kindly confirm your attendance by replying to this letter.
+
+Regards,
+Event Coordinator
