@@ -1,0 +1,16 @@
+1. Data > Remove Duplicates (all columns)  -> 14 unique rows remain
+2. Amount (G2)          =E2*F2
+   Month  (H2)          =TEXT(B2,"mmm")
+3. Summary sheet:
+   Karachi total        =SUMIFS(Sales!G:G,Sales!C:C,"Karachi")
+   Karachi in Feb       =SUMIFS(Sales!G:G,Sales!C:C,"Karachi",Sales!H:H,"Feb")
+   Laptop orders        =COUNTIFS(Sales!D:D,"Laptop")
+   Big orders (>100k)   =COUNTIFS(Sales!G:G,">100000")
+   Avg mouse units      =AVERAGEIFS(Sales!E:E,Sales!D:D,"Mouse")
+4. Profit model (sheet "Model"):
+   B1 Price 1500 | B2 Units 1000 | B3 Cost per unit 900 | B4 Fixed cost 250000
+   B5 Profit  =B1*B2-(B3*B2+B4)
+   Goal Seek: Set cell B5, To value 500000, By changing B2  -> units needed
+5. Protection:
+   Unlock B1:B4 -> Review > Protect Sheet (password optional)
+   File > Info > Protect Workbook > Encrypt with Password
