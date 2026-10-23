@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Courses</title>
+</head>
+<body>
+  <h1>Term 4 Courses</h1>
+  <ul id="list"></ul>
+  <script>
+    fetch("/api/courses")
+      .then((r) => r.json())
+      .then((data) => {
+        document.getElementById("list").innerHTML = data
+          .map((c) => `<li>${c.title} - ${c.sessions} sessions</li>`)
+          .join("");
+      });
+  </script>
+</body>
+</html>
