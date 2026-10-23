@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tables and Media</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Batch 2601A</h1>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Weekly timetable</caption>
+        <colgroup>
+          <col style="width: 18%">
+          <col span="3">
+        </colgroup>
+        <thead>
+          <tr><th scope="col">Time</th><th scope="col">Monday</th><th scope="col">Wednesday</th><th scope="col">Friday</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">09:00</th><td>HTML5</td><td>CSS3</td><td rowspan="2" class="merged">Lab (2 hrs)</td></tr>
+          <tr><th scope="row">11:00</th><td colspan="2" class="merged">JavaScript workshop</td></tr>
+          <tr><th scope="row">13:00</th><td>Git</td><td>SEO</td><td>Quiz</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="4">All sessions are 2 hours. Lab 3, first floor.</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <h2>Welcome video</h2>
+    <video controls playsinline width="640" preload="metadata"
+           poster="https://interactive-examples.mdn.mozilla.net/media/examples/flower.jpg">
+      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+      <track src="captions-en.vtt" kind="captions" srclang="en" label="English" default>
+      Your browser cannot play this video.
+      <a href="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">Download the MP4</a>.
+    </video>
+
+    <h2>Audio clip</h2>
+    <audio controls preload="none">
+      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mpeg">
+      Your browser does not support HTML5 audio.
+    </audio>
+    <details>
+      <summary>Transcript</summary>
+      <p>[A loud dinosaur roar for about two seconds.]</p>
+    </details>
+  </main>
+</body>
+</html>
