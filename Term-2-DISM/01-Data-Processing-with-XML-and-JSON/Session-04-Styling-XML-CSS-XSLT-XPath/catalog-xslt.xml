@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="catalog.xsl"?>
+<catalog>
+  <book category="programming"><title>Modern JavaScript</title><author>Ali Raza</author><price>2400</price></book>
+  <book category="database"><title>MySQL in Practice</title><author>Maria Shah</author><price>1900</price></book>
+  <book category="programming"><title>PHP 8 Quick Guide</title><author>Imran Javed</author><price>1500</price></book>
+  <book category="design"><title>UI Basics</title><author>Zara Noor</author><price>2100</price></book>
+</catalog>
