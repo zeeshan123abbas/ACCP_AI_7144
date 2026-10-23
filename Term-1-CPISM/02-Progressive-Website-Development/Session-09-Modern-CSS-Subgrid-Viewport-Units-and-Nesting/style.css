@@ -1,0 +1,52 @@
+:root { --brand: #7c3aed; }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: #faf7ff; }
+
+.hero {
+  min-height: 100svh;               /* never hidden behind mobile browser bars */
+  display: grid; place-content: center; text-align: center;
+  background: linear-gradient(135deg, var(--brand), #db2777); color: white;
+  & h1 { font-size: clamp(2.5rem, 10vi, 6rem); margin: 0; }
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem clamp(1rem, 5vw, 4rem);
+}
+
+.card {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;      /* title, text, button rows shared */
+  gap: .75rem;
+  background: white; padding: 1.25rem; border-radius: 16px;
+  box-shadow: 0 4px 14px rgb(0 0 0 / .08);
+
+  & h3 { margin: 0; color: var(--brand); }
+  & p  { margin: 0; }
+  & .btn {
+    align-self: end; justify-self: start;
+    background: var(--brand); color: white; padding: .5rem 1rem; border-radius: 8px; text-decoration: none;
+    &:hover { filter: brightness(1.15); }
+  }
+
+  /* card that contains an image needs 4 rows */
+  &:has(img) { grid-row: span 4; }
+  & img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; border-radius: 10px; }
+}
+
+/* Container queries */
+.widget-area { container-type: inline-size; margin: 0 auto 3rem; width: min(700px, 100% - 2rem); }
+.widget { padding: 1rem; background: #ede9fe; border-radius: 12px; }
+@container (min-width: 500px) {
+  .widget { display: flex; gap: 1rem; align-items: center; }
+  .widget h3 { white-space: nowrap; }
+}
+
+/* Fallback where subgrid is not supported */
+@supports not (grid-template-rows: subgrid) {
+  .card { display: flex; flex-direction: column; }
+  .card .btn { margin-top: auto; }
+}
