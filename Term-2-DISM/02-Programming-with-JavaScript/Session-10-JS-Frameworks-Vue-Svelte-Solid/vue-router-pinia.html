@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Router + Pinia</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://unpkg.com/vue-demi"></script>
+  <script src="https://unpkg.com/pinia@2/dist/pinia.iife.prod.js"></script>
+  <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.prod.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 600px; margin: 30px auto; }
+    nav a { margin-right: 12px; }
+    .router-link-active { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <nav>
+      <router-link to="/">Shop</router-link>
+      <router-link to="/cart">Cart ({{ cart.count }})</router-link>
+      <router-link to="/about">About</router-link>
+    </nav>
+    <router-view></router-view>
+  </div>
+
+  <script>
+    const { createApp, computed } = Vue;
+    const { createRouter, createWebHashHistory } = VueRouter;
+    const { createPinia, defineStore } = Pinia;
+
+    // ---- Pinia store: shared state ----
+    const useCart = defineStore("cart", {
+      state: () => ({ items: [] }),
+      getters: {
+        count: s => s.items.length,
+        total: s => s.items.reduce((sum, p) => sum + p.price, 0)
+      },
+      actions: {
+        add(product) { this.items.push(product); },
+        remove(index) { this.items.splice(index, 1); }
+      }
+    });
+
+    // ---- Page components ----
+    const Shop = {
+      setup() {
+        const cart = useCart();
+        const products = [
+          { id: 1, name: "Mouse", price: 1500 },
+          { id: 2, name: "Keyboard", price: 8500 },
+          { id: 3, name: "Headphones", price: 6000 }
+        ];
+        return { cart, products };
+      },
+      template: `<h2>Shop</h2>
+        <div v-for="p in products" :key="p.id">
+          {{ p.name }} — Rs. {{ p.price }} <button @click="cart.add(p)">Add</button>
+        </div>`
+    };
+    const Cart = {
+      setup() { return { cart: useCart() }; },
+      template: `<h2>Cart</h2>
+        <p v-if="!cart.count">Your cart is empty.</p>
+        <ul><li v-for="(item, i) in cart.items" :key="i">{{ item.name }} <button @click="cart.remove(i)">✕</button></li></ul>
+        <p><b>Total: Rs. {{ cart.total }}</b></p>`
+    };
+    const About = { template: `<h2>About</h2><p>Demo of Vue Router and Pinia via CDN.</p>` };
+
+    // ---- Router ----
+    const router = createRouter({
+      history: createWebHashHistory(),
+      routes: [
+        { path: "/", component: Shop },
+        { path: "/cart", component: Cart },
+        { path: "/about", component: About }
+      ]
+    });
+
+    const app = createApp({ setup() { return { cart: useCart() }; } });
+    app.use(createPinia());
+    app.use(router);
+    app.mount("#app");
+  </script>
+</body>
+</html>
