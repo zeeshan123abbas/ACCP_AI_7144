@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Counter</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <style>body { font-family: system-ui, sans-serif; text-align: center; margin-top: 60px; } button { font-size: 1.2rem; margin: 4px; }</style>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ title }}</h1>
+    <p style="font-size: 3rem">{{ count }}</p>
+    <p>Double: {{ double }} · {{ count % 2 === 0 ? "Even" : "Odd" }}</p>
+    <button @click="count--" :disabled="count === 0">−</button>
+    <button @click="count++">+</button>
+    <button @click="count = 0">Reset</button>
+    <p><input v-model="title" placeholder="Edit title"></p>
+  </div>
+  <script>
+    const { createApp, ref, computed } = Vue;
+    createApp({
+      setup() {
+        const count = ref(0);
+        const title = ref("Vue Counter");
+        const double = computed(() => count.value * 2);
+        return { count, title, double };
+      }
+    }).mount("#app");
+  </script>
+</body>
+</html>
