@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Basics</title>
+  <script src="app.js" defer></script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 700px; margin: 2rem auto; padding: 0 1rem; }
+    input, button { padding: .5rem; font: inherit; }
+    .pass { color: green; } .fail { color: crimson; }
+    table { border-collapse: collapse; margin-top: 1rem; } td { border: 1px solid #ccc; padding: .3rem .6rem; }
+  </style>
+</head>
+<body>
+  <h1>Grade Calculator</h1>
+  <label for="marks">Marks (0-100):</label>
+  <input id="marks" type="number" min="0" max="100">
+  <button id="checkBtn">Check grade</button>
+  <p id="result" aria-live="polite"></p>
+
+  <h2>Phone validator (RegExp)</h2>
+  <input id="phone" placeholder="0300-1234567">
+  <span id="phoneMsg"></span>
+
+  <h2>Class report</h2>
+  <button id="reportBtn">Generate report</button>
+  <div id="report"></div>
+
+  <h2>Times table</h2>
+  <div id="table"></div>
+</body>
+</html>
