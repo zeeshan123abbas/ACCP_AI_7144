@@ -1,0 +1,19 @@
+/*
+ Theme Name:   MySite Child
+ Template:     twentytwentyfour
+ Description:  Child theme for my practice site
+ Version:      1.0.0
+ Text Domain:  mysite-child
+*/
+
+/* Your custom styles */
+:root {
+  --brand: #0d6efd;
+}
+.wp-block-button__link {
+  border-radius: 999px;
+  background: var(--brand);
+}
+.site-footer, footer.wp-block-template-part {
+  border-top: 3px solid var(--brand);
+}
