@@ -1,0 +1,20 @@
+### List available books, newest first
+GET http://localhost:3000/api/v1/books?available=true&sort=-year
+
+### Create
+POST http://localhost:3000/api/v1/books
+Content-Type: application/json
+
+{ "title": "Node.js Design Patterns", "author": "Mario Casciaro", "year": 2020 }
+
+### Partial update
+PATCH http://localhost:3000/api/v1/books/1
+Content-Type: application/json
+
+{ "available": false }
+
+### Action endpoint
+POST http://localhost:3000/api/v1/books/3/borrow
+
+### Delete
+DELETE http://localhost:3000/api/v1/books/2
