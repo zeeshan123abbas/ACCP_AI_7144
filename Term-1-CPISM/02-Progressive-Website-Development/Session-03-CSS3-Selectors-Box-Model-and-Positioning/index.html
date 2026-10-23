@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Basics Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="top" class="site-header">
+    <h1>CSS Basics</h1>
+    <nav>
+      <a href="#box">Box model</a>
+      <a href="#position">Positioning</a>
+      <a href="https://developer.mozilla.org/docs/Web/CSS" target="_blank" rel="noopener">MDN</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="intro">CSS turns plain HTML into a <span class="highlight">beautiful</span> page.</p>
+
+    <section id="box">
+      <h2>Box model</h2>
+      <div class="box">I have padding, a border and margin.</div>
+    </section>
+
+    <section id="position">
+      <h2>Positioning</h2>
+      <div class="card">
+        <span class="badge">NEW</span>
+        <img src="https://picsum.photos/120" alt="Random sample" class="float-left">
+        <p>This image floats left so the text wraps around it. The red badge is positioned
+           absolutely inside the card because the card is <code>position: relative</code>.</p>
+      </div>
+      <ul class="list">
+        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Git</li>
+      </ul>
+    </section>
+  </main>
+  <a href="#top" class="to-top" aria-label="Back to top">&uarr;</a>
+</body>
+</html>
