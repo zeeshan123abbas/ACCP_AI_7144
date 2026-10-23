@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox & Grid</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <header class="header">
+      <strong class="brand">Dashboard</strong>
+      <nav class="menu">
+        <a href="#">Home</a><a href="#">Reports</a><a href="#">Settings</a>
+      </nav>
+    </header>
+
+    <aside class="sidebar">
+      <h2>Filters</h2>
+      <p>Grid area: sidebar</p>
+    </aside>
+
+    <main class="main">
+      <section class="stats">
+        <div class="stat">Students <b>120</b></div>
+        <div class="stat">Batches <b>6</b></div>
+        <div class="stat grow">Attendance <b>92%</b></div>
+      </section>
+
+      <section class="cards">
+        <article class="card">HTML</article>
+        <article class="card">CSS</article>
+        <article class="card wide">JavaScript (spans 2 columns)</article>
+        <article class="card">Git</article>
+        <article class="card">SEO</article>
+        <article class="card">Bootstrap</article>
+      </section>
+
+      <div class="center-box">Perfectly centred</div>
+    </main>
+
+    <footer class="footer">Footer area</footer>
+  </div>
+</body>
+</html>
