@@ -1,0 +1,8 @@
+[
+  { "name": "Clifton Beach", "type": "Beach" },
+  { "name": "Quaid's Mausoleum", "type": "Monument" },
+  { "name": "Frere Hall", "type": "Heritage" },
+  { "name": "Port Grand", "type": "Food street" },
+  { "name": "Mohatta Palace", "type": "Museum" },
+  { "name": "Karachi Zoo", "type": "Park" }
+]
