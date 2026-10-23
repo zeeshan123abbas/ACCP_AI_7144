@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Feedback Survey</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Course Feedback</h1>
+      <p>Takes 2 minutes. Your answers help us improve.</p>
+    </header>
+
+    <form class="grid-form" action="https://httpbin.org/get" method="get">
+      <div class="field">
+        <label for="fname">Name</label>
+        <input id="fname" name="name" required>
+        <small class="hint">Required</small>
+      </div>
+      <div class="field">
+        <label for="batch">Batch code</label>
+        <input id="batch" name="batch" pattern="[0-9]{4}[A-Z]" placeholder="2601A" required>
+        <small class="hint">4 digits + 1 capital letter</small>
+      </div>
+
+      <div class="field full">
+        <label for="module">Module</label>
+        <select id="module" name="module" required>
+          <option value="">-- choose --</option>
+          <option>Office Automation</option>
+          <option>Progressive Website Development</option>
+          <option>Bootstrap and jQuery</option>
+        </select>
+      </div>
+
+      <fieldset class="full">
+        <legend>How clear were the sessions?</legend>
+        <label><input type="radio" name="clarity" value="5" required> Very clear</label>
+        <label><input type="radio" name="clarity" value="3"> Okay</label>
+        <label><input type="radio" name="clarity" value="1"> Confusing</label>
+      </fieldset>
+
+      <div class="field full">
+        <label for="rating">Overall rating (1-10)</label>
+        <input id="rating" name="rating" type="range" min="1" max="10" value="8">
+      </div>
+
+      <div class="field full">
+        <label for="comments">Comments</label>
+        <textarea id="comments" name="comments" rows="4" maxlength="500"></textarea>
+      </div>
+
+      <button class="full" type="submit">Send feedback</button>
+    </form>
+  </main>
+</body>
+</html>
