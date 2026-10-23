@@ -1,0 +1,27 @@
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; font-family: system-ui, sans-serif; background: #f5f7fb; }
+
+.nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background: white; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+.nav nav { display: flex; gap: 1rem; align-items: center; }
+.nav a { text-decoration: none; color: #333; }
+.logo { font-weight: 800; color: #0d6efd; }
+
+main { width: min(1100px, 100% - 2rem); margin-inline: auto; padding-block: 2rem; }
+h1 { text-align: center; }
+
+.pricing { display: grid; gap: 1.5rem; grid-template-columns: 1fr; align-items: stretch; }
+@media (min-width: 768px) { .pricing { grid-template-columns: repeat(3, 1fr); } }
+
+.plan { display: flex; flex-direction: column; background: white; border-radius: 14px; padding: 1.5rem; border: 1px solid #e3e8f0; }
+.plan ul { padding-left: 1.2rem; flex-grow: 1; }     /* pushes button to the bottom */
+.price { font-size: 2rem; font-weight: 800; margin: .25rem 0; }
+.price span { font-size: 1rem; color: #777; }
+.popular { border: 2px solid #0d6efd; transform: scale(1.03); }
+
+.btn { display: inline-block; text-align: center; background: #0d6efd; color: white !important; padding: .6rem 1rem; border-radius: 8px; }
+
+.media { display: flex; gap: 1rem; align-items: center; margin-top: 2rem; background: white; padding: 1rem; border-radius: 14px; }
+.media img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.media div { min-width: 0; }
+
+.footer { text-align: center; padding: 1rem; background: #1f2937; color: white; }
