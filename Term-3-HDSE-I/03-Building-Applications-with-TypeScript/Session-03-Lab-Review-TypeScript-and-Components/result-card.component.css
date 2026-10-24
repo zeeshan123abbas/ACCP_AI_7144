@@ -1,0 +1,4 @@
+/* result-card.component.css */
+.card { border: 1px solid #ddd; border-radius: 10px; padding: 16px; max-width: 300px; }
+.pass { color: green; font-weight: bold; }
+.fail { color: crimson; font-weight: bold; }
