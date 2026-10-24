@@ -1,0 +1,6 @@
+# Run: flutter pub add http shared_preferences
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.6.0                # products from dummyjson.com
+  shared_preferences: ^2.5.6  # favourites + dark mode survive restarts
