@@ -155,6 +155,6 @@ Choose a dataset you care about (cricket scores, weather, sales), load it into A
 
 ---
 
-[⬅ Previous](../Session-15-AI-Powered-MongoDB/README.md) · [🏠 Module Home](../README.md) · [Next ➡](../README.md)
+[⬅ Previous](../Session-15-AI-Powered-MongoDB/README.md) · [🏠 Module Home](../README.md) · [Next ➡](../../04-Developing-Microsoft-Azure-Applications/README.md)
 
 Prepared by Zeeshan Abbas · Aptech Learning North Nazimabad
