@@ -1,0 +1,22 @@
+@model List<Course>
+<h1>Courses</h1>
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <p>Hello @User.Identity.Name | <a asp-controller="Account" asp-action="Logout">Logout</a></p>
+}
+else
+{
+    <p><a asp-controller="Account" asp-action="Login">Login</a></p>
+}
+
+@foreach (var course in Model)
+{
+    <partial name="_CourseCard" model="course" />
+}
+
+@* View-based authorization: only admins see this link *@
+@if (User.IsInRole("Admin"))
+{
+    <p><a asp-controller="Admin" asp-action="Index">Go to Admin panel</a></p>
+}
