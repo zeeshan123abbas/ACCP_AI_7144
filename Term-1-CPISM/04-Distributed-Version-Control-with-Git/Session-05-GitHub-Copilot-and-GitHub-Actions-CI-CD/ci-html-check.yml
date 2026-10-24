@@ -1,0 +1,26 @@
+# CI = Continuous Integration: automatically CHECK every push and pull request.
+# Save as: .github/workflows/ci-html-check.yml
+
+name: CI - check HTML
+
+on:
+  push:
+    branches: [main]
+  pull_request:                  # also runs on every PR, the result shows inside the PR
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # html-validate checks for mistakes such as unclosed tags or missing alt text.
+      # If it finds an error, the step fails and the PR shows a red ❌.
+      - name: Validate all HTML files
+        run: npx --yes html-validate "**/*.html"
