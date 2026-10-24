@@ -1,0 +1,7 @@
+<h1>Login (demo)</h1>
+<form asp-action="Login" method="post">
+    <label for="userName">User name</label>
+    @Html.TextBox("userName")   @* HTML helper version of an input *@
+    <button type="submit">Login</button>
+</form>
+<p>Tip: type <b>admin</b> for the Admin role, anything else for Student.</p>
