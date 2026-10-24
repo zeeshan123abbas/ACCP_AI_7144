@@ -1,0 +1,15 @@
+<!-- profile.component.html -->
+<div class="card">
+  <!-- Property binding: [src] gets its value from the class -->
+  <img [src]="photoUrl" alt="Profile photo" />
+
+  <!-- Interpolation: {{ }} shows a value as text -->
+  <h3>{{ name }}</h3>
+  <p>Course: {{ course }}</p>
+
+  <!-- Class binding: add the class "online" only when isOnline is true -->
+  <p [class.online]="isOnline">{{ isOnline ? 'Online' : 'Offline' }}</p>
+
+  <!-- Event binding: (click) calls a method -->
+  <button (click)="addLike()">Like ({{ likes }})</button>
+</div>
