@@ -118,39 +118,13 @@ export class InitialsPipe implements PipeTransform {
 📄 File: [`template-form.component.html`](template-form.component.html)
 
 ```html
-<!-- template-form.component.html -->
-<h2>Admission Form (template-driven)</h2>
-
-<!-- #regForm="ngForm" gives us the whole form's state -->
 <form #regForm="ngForm" (ngSubmit)="onSubmit()">
-  <label>Name
-    <input name="name" [(ngModel)]="student.name" #nameCtrl="ngModel" required minlength="3" />
-  </label>
+  <input name="name" [(ngModel)]="student.name" #nameCtrl="ngModel" required minlength="3" />
   @if (nameCtrl.invalid && nameCtrl.touched) {
     <small class="error">Name is required (at least 3 letters).</small>
   }
-
-  <label>Email
-    <input name="email" type="email" [(ngModel)]="student.email" #emailCtrl="ngModel" required email />
-  </label>
-  @if (emailCtrl.invalid && emailCtrl.touched) {
-    <small class="error">Please enter a valid email.</small>
-  }
-
-  <label>Course
-    <select name="course" [(ngModel)]="student.course">
-      <option>HDSE</option>
-      <option>ADSE</option>
-    </select>
-  </label>
-
-  <!-- the button is disabled until every rule passes -->
   <button type="submit" [disabled]="regForm.invalid">Register</button>
 </form>
-
-@if (submitted) {
-  <p>Thank you, {{ student.name }}! You applied for {{ student.course }}.</p>
-}
 ```
 
 **How it works:** `[(ngModel)]` keeps `student.name` and the input in sync. `#nameCtrl="ngModel"` lets us check `invalid` and `touched`. The class is in [`template-form.component.ts`](template-form.component.ts).
