@@ -1,0 +1,6 @@
+id,story,points,status,owner
+US-01,Student can log in with college email,3,Done,Ali
+US-02,Student can view timetable,5,In Progress,Sana
+US-03,Student receives class-cancelled notification,8,To Do,
+US-04,Admin can upload timetable CSV,5,In Progress,Usman
+US-05,Student can switch Urdu/English,3,To Do,
