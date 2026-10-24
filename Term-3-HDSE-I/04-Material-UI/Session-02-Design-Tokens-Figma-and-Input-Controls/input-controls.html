@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Input Controls with Design Tokens</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <style>
+    body { font-family: var(--md-ref-typeface-brand); background: var(--md-sys-color-surface);
+           color: var(--md-sys-color-on-surface); padding: 24px; max-width: 420px; }
+    .field { display: flex; flex-direction: column; margin-bottom: 16px; }
+    label { font-size: 12px; margin-bottom: 4px; }
+
+    /* Text field uses component tokens */
+    input[type="text"], select {
+      height: 48px; padding: 0 12px; font-size: 16px; border-radius: 4px;
+      border: 1px solid var(--md-comp-text-field-outline-color);
+      background: transparent; color: inherit;
+    }
+    input[type="text"]:focus, select:focus {
+      outline: none; border: 2px solid var(--md-comp-text-field-focus-outline-color);
+    }
+
+    /* Filled button uses component tokens */
+    .filled-button {
+      height: 40px; padding: 0 24px; border: none; font-size: 14px; cursor: pointer;
+      border-radius: var(--md-comp-filled-button-container-shape);
+      background: var(--md-comp-filled-button-container-color);
+      color: var(--md-comp-filled-button-label-text-color);
+    }
+
+    /* Checkbox, radio and range take the primary colour */
+    input[type="checkbox"], input[type="radio"], input[type="range"] {
+      accent-color: var(--md-sys-color-primary); width: 18px; height: 18px;
+    }
+    input[type="range"] { width: 100%; }
+
+    .chip { display: inline-block; padding: 6px 16px; margin: 4px 4px 0 0;
+            border: 1px solid var(--md-sys-color-outline);
+            border-radius: var(--md-sys-shape-corner-small); }
+  </style>
+</head>
+<body>
+  <h1>Course Enquiry</h1>
+
+  <div class="field">
+    <label for="name">Full name (text field)</label>
+    <input id="name" type="text" placeholder="e.g. Sana Ahmed" />
+  </div>
+
+  <div class="field">
+    <label for="course">Course (dropdown / menu)</label>
+    <select id="course"><option>HDSE</option><option>ADSE</option></select>
+  </div>
+
+  <p>Timing (radio buttons: choose ONE)</p>
+  <label><input type="radio" name="time" checked /> Morning</label>
+  <label><input type="radio" name="time" /> Evening</label>
+
+  <p>Interests (checkboxes: choose MANY)</p>
+  <label><input type="checkbox" checked /> Web</label>
+  <label><input type="checkbox" /> AI</label>
+
+  <p>Experience in years (slider)</p>
+  <input type="range" min="0" max="5" value="1" />
+
+  <p>Filters (chips)</p>
+  <span class="chip">Weekend</span><span class="chip">Online</span>
+
+  <p><label><input type="checkbox" id="dark" /> Dark theme (switch-like toggle)</label></p>
+  <button class="filled-button">Send enquiry</button>
+
+  <script>
+    // Switching the theme only swaps SYSTEM tokens
+    document.getElementById("dark").addEventListener("change", function (event) {
+      document.documentElement.classList.toggle("dark-theme", event.target.checked);
+    });
+  </script>
+</body>
+</html>
