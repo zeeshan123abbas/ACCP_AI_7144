@@ -1,0 +1,17 @@
+// Session 02 - Example 6: Kusto (KQL) queries for Application Insights > Logs
+
+// 1. Requests in the last hour, newest first
+requests
+| where timestamp > ago(1h)
+| project timestamp, name, resultCode, duration
+| order by timestamp desc
+
+// 2. How many requests failed, per page/endpoint
+requests
+| where success == false
+| summarize failures = count() by name
+
+// 3. The five most common exceptions (run-time errors)
+exceptions
+| summarize total = count() by type, outerMessage
+| top 5 by total
