@@ -1,0 +1,14 @@
+GET http://localhost:5000/students/3
+
+###
+GET http://localhost:5000/search?name=ali&page=2
+
+###
+GET http://localhost:5000/binding/header
+X-Batch: 2401
+
+###
+POST http://localhost:5000/binding/body
+Content-Type: application/json
+
+{ "id": 1, "fullName": "Ali Raza", "joinDate": "2026-01-10" }
