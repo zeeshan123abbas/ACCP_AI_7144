@@ -1,22 +1,20 @@
-"""Session 04 - Encoder-only (BERT) vs decoder-only (GPT-2) models in practice.
+"""Session 04 - Example 5: encoder-only (BERT) vs decoder-only (GPT-2) in practice.
 
-BERT reads the whole sentence in both directions -> great for understanding (fill-mask).
-GPT-2 reads left-to-right only -> great for generating the next words.
+Encoder (DistilBERT) reads the WHOLE sentence -> good at understanding (fill in the blank).
+Decoder (DistilGPT-2) reads LEFT to RIGHT -> good at writing the next words.
+Setup: pip install transformers torch   (two small models download once)
+Run:   python encoder_vs_decoder.py
 """
-from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
+from transformers import pipeline
 
-fill = pipeline("fill-mask", model="distilbert-base-uncased")
-print("ENCODER (DistilBERT) fills the blank using both sides of the sentence:")
-for r in fill("Students use Python to [MASK] machine learning models.")[:3]:
-    print(f"  {r['token_str']:<10} score={r['score']:.3f}")
+# Step 1: encoder-only model fills a blank using words on BOTH sides
+fill_mask = pipeline("fill-mask", model="distilbert-base-uncased")
+print("ENCODER (DistilBERT): 'Students use Python to [MASK] machine learning models.'")
+for guess in fill_mask("Students use Python to [MASK] machine learning models.")[:3]:
+    print(f"   {guess['token_str']:<8} score={guess['score']:.2f}")
 
-tok = AutoTokenizer.from_pretrained("distilgpt2")
-gpt = AutoModelForCausalLM.from_pretrained("distilgpt2")
-ids = tok("Students use Python to", return_tensors="pt")
-out = gpt.generate(**ids, max_new_tokens=12, do_sample=False, pad_token_id=tok.eos_token_id)
-print("\nDECODER (DistilGPT-2) continues the text left-to-right:")
-print(" ", tok.decode(out[0], skip_special_tokens=True))
-
-print("\nTokenization differs too:")
-print("  BERT :", fill.tokenizer.tokenize("Transformers are unbelievable"))
-print("  GPT-2:", tok.tokenize("Transformers are unbelievable"))
+# Step 2: decoder-only model continues the text one token at a time
+generator = pipeline("text-generation", model="distilgpt2")
+result = generator("Students use Python to", max_new_tokens=12, do_sample=False)
+print("\nDECODER (DistilGPT-2):")
+print("  ", result[0]["generated_text"])
