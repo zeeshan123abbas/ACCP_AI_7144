@@ -1,0 +1,18 @@
+@host = http://localhost:5000
+
+POST {{host}}/api/students
+Content-Type: application/json
+
+{ "fullName": "Maryam Khan", "email": "maryam@example.com", "courseId": 1 }
+
+###
+GET {{host}}/api/students
+
+###
+PUT {{host}}/api/students/1
+Content-Type: application/json
+
+{ "fullName": "Maryam Khan", "email": "maryam.k@example.com", "courseId": 2 }
+
+###
+DELETE {{host}}/api/students/1
