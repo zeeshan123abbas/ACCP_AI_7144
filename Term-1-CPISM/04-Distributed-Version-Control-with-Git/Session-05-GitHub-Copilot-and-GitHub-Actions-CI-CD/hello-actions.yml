@@ -1,0 +1,19 @@
+# The smallest possible GitHub Actions workflow.
+# Save as: .github/workflows/hello-actions.yml  (in the ROOT of your repo)
+
+name: Hello Actions              # name shown in the "Actions" tab
+
+on: [push]                       # WHEN: run on every push to any branch
+
+jobs:
+  say-hello:                     # a job id (any name you like)
+    runs-on: ubuntu-latest       # WHERE: a fresh Linux machine from GitHub
+    steps:                       # WHAT: steps run one after another
+      - name: Download my code
+        uses: actions/checkout@v4          # ready-made action: copies the repo onto the machine
+
+      - name: Say hello
+        run: echo "Hello from GitHub Actions! Commit by ${{ github.actor }}"
+
+      - name: List my files
+        run: ls -la
