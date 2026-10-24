@@ -1,33 +1,29 @@
-"""Session 03 - Open-ended text generation and decoding strategies.
+"""Session 03 - Example 4: how decoding settings change generated text.
 
 Model: distilgpt2 (~350 MB), a small decoder-only language model.
-Compare greedy, beam search, top-k and nucleus (top-p) sampling.
+Setup: pip install transformers torch
+Run:   python text_generation_decoding.py
 """
-import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import pipeline, set_seed
 
-MODEL = "distilgpt2"
-tokenizer = AutoTokenizer.from_pretrained(MODEL)
-model = AutoModelForCausalLM.from_pretrained(MODEL)
+# Step 1: create a text-generation pipeline
+generator = pipeline("text-generation", model="distilgpt2")
+set_seed(42)                                   # same "random" results every run
+
 prompt = "Artificial intelligence will help students"
-inputs = tokenizer(prompt, return_tensors="pt")
 
-strategies = {
-    "greedy": dict(do_sample=False),
-    "beam (5)": dict(do_sample=False, num_beams=5, no_repeat_ngram_size=2),
-    "top-k (k=50)": dict(do_sample=True, top_k=50, temperature=0.9),
-    "top-p (p=0.92)": dict(do_sample=True, top_p=0.92, top_k=0, temperature=0.9),
-}
-torch.manual_seed(42)
-for name, cfg in strategies.items():
-    out = model.generate(**inputs, max_new_tokens=25, pad_token_id=tokenizer.eos_token_id, **cfg)
-    print(f"[{name:<14}] {tokenizer.decode(out[0], skip_special_tokens=True)!r}\n")
+# Step 2: greedy decoding - always pick the single most likely next word
+greedy = generator(prompt, max_new_tokens=20, do_sample=False)
+print("GREEDY  :", greedy[0]["generated_text"], "\n")
 
-# Peek inside: the model's top 5 guesses for the very next token
-with torch.no_grad():
-    logits = model(**inputs).logits[0, -1]
-probs = torch.softmax(logits, dim=-1)
-top = torch.topk(probs, 5)
-print("Next-token probabilities:")
-for p, idx in zip(top.values, top.indices):
-    print(f"  {tokenizer.decode(idx)!r:<12} {p.item():.3f}")
+# Step 3: sampling with LOW temperature - safe, focused choices
+low_temp = generator(prompt, max_new_tokens=20, do_sample=True, temperature=0.3)
+print("TEMP 0.3:", low_temp[0]["generated_text"], "\n")
+
+# Step 4: sampling with HIGH temperature - more creative (and more random)
+high_temp = generator(prompt, max_new_tokens=20, do_sample=True, temperature=1.3)
+print("TEMP 1.3:", high_temp[0]["generated_text"], "\n")
+
+# Step 5: top-p (nucleus) sampling - choose only from the most likely words
+top_p = generator(prompt, max_new_tokens=20, do_sample=True, top_p=0.9)
+print("TOP-P   :", top_p[0]["generated_text"])
