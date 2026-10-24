@@ -1,0 +1,14 @@
+# Run: flutter pub add tflite_flutter image_picker image
+dependencies:
+  flutter:
+    sdk: flutter
+  tflite_flutter: ^0.12.1   # runs .tflite models on the device
+  image_picker: ^1.2.4      # pick a photo from camera or gallery
+  image: ^4.12.0            # decode and resize images in Dart
+
+flutter:
+  uses-material-design: true
+  # Tell Flutter to bundle the model and labels inside the app.
+  assets:
+    - assets/models/mobilenet_quant.tflite
+    - assets/models/labels.txt
