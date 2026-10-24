@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Component and Interaction States</title>
+  <style>
+    :root {
+      --primary: #6750a4;
+      --on-primary: #ffffff;
+      --on-surface: #1d1b20;
+    }
+    body { font-family: Roboto, Arial, sans-serif; padding: 24px; }
+
+    .btn {
+      position: relative;            /* needed for the state layer */
+      overflow: hidden;
+      height: 40px; padding: 0 24px; border: none; border-radius: 20px;
+      background: var(--primary); color: var(--on-primary);
+      font-size: 14px; font-weight: 500; cursor: pointer; margin: 8px;
+    }
+
+    /* STATE LAYER: a see-through layer of the content colour on top of the button */
+    .btn::after {
+      content: ""; position: absolute; inset: 0;
+      background: var(--on-primary); opacity: 0;   /* invisible when enabled */
+      transition: opacity 150ms;
+    }
+    .btn:hover::after         { opacity: 0.08; }  /* hover: 8%  */
+    .btn:focus-visible::after { opacity: 0.10; }  /* focus: 10% */
+    .btn:active::after        { opacity: 0.10; }  /* pressed: 10% */
+
+    /* FOCUS also gets a clear outline for keyboard users */
+    .btn:focus-visible { outline: 3px solid var(--on-surface); outline-offset: 2px; }
+
+    /* DISABLED: faded container (12%) and faded text (38%), no pointer */
+    .btn:disabled {
+      background: rgba(29, 27, 32, 0.12);
+      color: rgba(29, 27, 32, 0.38);
+      cursor: not-allowed;
+    }
+    .btn:disabled::after { display: none; }
+
+    /* ERROR state for a text field */
+    .field { display: block; margin: 16px 8px; }
+    .field input { height: 44px; padding: 0 12px; border: 1px solid #79747e; border-radius: 4px; }
+    .field.error input { border: 2px solid #b3261e; }
+    .field.error small { color: #b3261e; display: block; }
+  </style>
+</head>
+<body>
+  <h1>Button states</h1>
+  <p>Hover, press, and use the Tab key to see each state.</p>
+  <button class="btn">Enabled</button>
+  <button class="btn" disabled>Disabled</button>
+
+  <h1>Selected state</h1>
+  <!-- aria-pressed tells screen readers the button is ON -->
+  <button class="btn" id="fav" aria-pressed="false">☆ Favourite</button>
+
+  <h1>Error state</h1>
+  <label class="field error">
+    Email
+    <input type="email" value="sana@" />
+    <small>Enter a complete email address</small>
+  </label>
+
+  <script>
+    // Toggle the SELECTED state
+    const fav = document.getElementById("fav");
+    fav.addEventListener("click", function () {
+      const isOn = fav.getAttribute("aria-pressed") === "true";
+      fav.setAttribute("aria-pressed", String(!isOn));
+      fav.textContent = isOn ? "☆ Favourite" : "★ Favourite";
+    });
+  </script>
+</body>
+</html>
