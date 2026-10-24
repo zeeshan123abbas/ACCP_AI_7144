@@ -1,0 +1,13 @@
+# pubspec.yaml - the "ID card" of a Dart package.
+name: grade_calculator
+description: A tiny beginner package that turns marks into grades and calculates averages.
+version: 1.0.0
+# repository: https://github.com/your-username/grade_calculator  # add before publishing
+
+environment:
+  sdk: ^3.5.0
+
+# Packages needed only while developing (tests, linting).
+dev_dependencies:
+  lints: ^5.0.0
+  test: ^1.25.0
