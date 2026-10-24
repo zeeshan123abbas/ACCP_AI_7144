@@ -1,0 +1,49 @@
+# Session 09 - Example 6: GitHub Actions CI/CD for the Students API
+# Save as .github/workflows/deploy-api.yml in a repo whose root holds StudentsApi.csproj.
+# Repo settings needed:
+#   Variables -> AZURE_WEBAPP_NAME             (your web app name)
+#   Secrets   -> AZURE_WEBAPP_PUBLISH_PROFILE  (Portal > Web App > Download publish profile)
+name: Build and deploy Students API
+
+on:
+  push:
+    branches: [main]      # every push to main runs the pipeline
+  workflow_dispatch:      # also allow a manual "Run workflow" button
+
+jobs:
+  build:                  # CI: prove the code builds, then package it
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build
+        run: dotnet build --configuration Release
+
+      - name: Publish
+        run: dotnet publish --configuration Release --output ./publish
+
+      - name: Save the package as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: students-api
+          path: ./publish
+
+  deploy:                 # CD: send the same package to Azure
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: students-api
+          path: ./publish
+
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ vars.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./publish
