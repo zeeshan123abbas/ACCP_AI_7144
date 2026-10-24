@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- Session 04 · Template for an SEO-optimized blog post with Article structured data -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Step 1: Title and description for the search result -->
+  <title>What Is Responsive Web Design? A Beginner's Guide</title>
+  <meta name="description" content="Responsive web design makes one website fit every screen. Learn how it works, why Google prefers it, and 5 simple steps to make your site responsive.">
+  <link rel="canonical" href="https://www.example.com/blog/what-is-responsive-web-design">
+
+  <!-- Step 2: Article structured data (must match what is visible on the page) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What Is Responsive Web Design? A Beginner's Guide",
+    "author": { "@type": "Person", "name": "Ayesha Khan" },
+    "datePublished": "2026-10-10",
+    "dateModified": "2026-10-20",
+    "image": "https://www.example.com/images/responsive-devices.webp"
+  }
+  </script>
+</head>
+<body>
+  <article>
+    <!-- Step 3: H1 + author + dates (trust and freshness) -->
+    <h1>What Is Responsive Web Design? A Beginner's Guide</h1>
+    <p>By Ayesha Khan · Updated <time datetime="2026-10-20">20 October 2026</time></p>
+
+    <!-- Step 4: Answer the question in the first paragraph -->
+    <p>Responsive web design is a way of building one website that automatically adjusts its
+       layout, images and text to fit any screen, from a small phone to a wide desktop monitor.</p>
+
+    <img src="responsive-devices.webp" alt="The same website shown on a phone, a tablet and a laptop"
+         width="800" height="450">
+
+    <!-- Step 5: H2 sections with lists and tables -->
+    <h2>Why does responsive design matter for SEO?</h2>
+    <ul>
+      <li>Google indexes the mobile version of your site first.</li>
+      <li>One URL means all links and shares help the same page.</li>
+      <li>Visitors stay longer when the page is easy to read on their phone.</li>
+    </ul>
+
+    <h2>Responsive vs separate mobile site</h2>
+    <table>
+      <tr><th>Feature</th><th>Responsive</th><th>Separate m. site</th></tr>
+      <tr><td>Number of URLs</td><td>One</td><td>Two</td></tr>
+      <tr><td>Maintenance</td><td>Easy</td><td>Double work</td></tr>
+    </table>
+
+    <h2>How to make a website responsive in 5 steps</h2>
+    <ol>
+      <li>Add the viewport meta tag.</li>
+      <li>Use flexible layouts with Flexbox or Grid.</li>
+      <li>Make images flexible with <code>max-width: 100%</code>.</li>
+      <li>Add media queries for small and large screens.</li>
+      <li>Test in browser DevTools device mode.</li>
+    </ol>
+
+    <!-- Step 6: FAQ-style questions (helpful for readers and featured snippets) -->
+    <h2>Frequently asked questions</h2>
+    <h3>Is Bootstrap responsive?</h3>
+    <p>Yes. Bootstrap 5 uses a mobile-first grid, so pages built with it adapt to all screen sizes.</p>
+    <h3>Do I need a separate mobile sitemap?</h3>
+    <p>No. A responsive site uses the same URLs on every device, so one normal sitemap is enough.</p>
+
+    <!-- Step 7: Internal links to the pillar page and related posts -->
+    <p>Read next: <a href="/blog/complete-guide-to-web-design">Complete guide to web design</a>
+       and <a href="/blog/css-flexbox-vs-grid">CSS Flexbox vs Grid</a>.</p>
+  </article>
+</body>
+</html>
