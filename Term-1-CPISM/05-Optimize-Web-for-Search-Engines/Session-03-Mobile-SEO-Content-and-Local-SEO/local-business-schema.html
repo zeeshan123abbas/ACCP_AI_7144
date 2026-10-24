@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- Session 03 · LocalBusiness structured data (JSON-LD). Test at https://search.google.com/test/rich-results -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Karachi Tech Hub | North Nazimabad, Karachi</title>
+  <meta name="description" content="Visit Karachi Tech Hub in Block H, North Nazimabad. Open Monday to Saturday, 9 am to 9 pm. Call or WhatsApp us for course details.">
+
+  <!-- Structured data: a "name badge" for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Karachi Tech Hub",
+    "image": "https://www.example.com/images/front-desk.jpg",
+    "telephone": "+92-21-0000-0000",
+    "email": "info@example.com",
+    "url": "https://www.example.com/",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Block H, North Nazimabad",
+      "addressLocality": "Karachi",
+      "addressRegion": "Sindh",
+      "postalCode": "74700",
+      "addressCountry": "PK"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 24.9425,
+      "longitude": 67.0451
+    },
+    "openingHours": "Mo-Sa 09:00-21:00",
+    "sameAs": [
+      "https://www.facebook.com/example",
+      "https://www.instagram.com/example"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <main>
+    <h1>Contact Karachi Tech Hub</h1>
+    <!-- The SAME name, address and phone as in the JSON-LD above (NAP consistency) -->
+    <address>
+      Karachi Tech Hub<br>
+      Block H, North Nazimabad, Karachi, Sindh 74700, Pakistan<br>
+      Phone: <a href="tel:+922100000000">+92-21-0000-0000</a>
+    </address>
+    <p>Open Monday to Saturday, 9:00 am to 9:00 pm.</p>
+  </main>
+</body>
+</html>
