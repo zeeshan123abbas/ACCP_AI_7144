@@ -1,0 +1,11 @@
+# A tiny Dart web app. package:web gives Dart access to the browser (DOM).
+name: dart_web_demo
+description: Counter and form examples written in Dart for the browser.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  web: ^1.1.0
