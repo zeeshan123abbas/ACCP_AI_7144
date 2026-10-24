@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Karachi Café - Menu Lab</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <h1 class="text-center">Karachi Café Menu</h1>
+
+    <!-- Numbers that count up (jQuery animate) -->
+    <div class="row text-center my-4">
+      <div class="col-4"><span class="counter fs-2 fw-bold" data-target="12">0</span><br>Items</div>
+      <div class="col-4"><span class="counter fs-2 fw-bold" data-target="5">0</span><br>Years</div>
+      <div class="col-4"><span class="counter fs-2 fw-bold" data-target="900">0</span><br>Happy guests</div>
+    </div>
+
+    <!-- Filter buttons: data-filter tells jQuery which category to show -->
+    <div class="text-center mb-4" id="filters">
+      <button class="btn btn-dark" data-filter="all">All</button>
+      <button class="btn btn-outline-dark" data-filter="drink">Drinks</button>
+      <button class="btn btn-outline-dark" data-filter="food">Food</button>
+    </div>
+
+    <!-- Search box -->
+    <input id="search" class="form-control mb-4" placeholder="Search the menu...">
+
+    <!-- Menu items: data-category is read by jQuery -->
+    <div class="row g-3" id="menu">
+      <div class="col-6 col-md-4 col-lg-3 item" data-category="drink"><div class="card p-3">Doodh Patti <span class="badge bg-success">Rs 120</span></div></div>
+      <div class="col-6 col-md-4 col-lg-3 item" data-category="drink"><div class="card p-3">Cold Coffee <span class="badge bg-success">Rs 350</span></div></div>
+      <div class="col-6 col-md-4 col-lg-3 item" data-category="drink"><div class="card p-3">Mint Margarita <span class="badge bg-success">Rs 300</span></div></div>
+      <div class="col-6 col-md-4 col-lg-3 item" data-category="food"><div class="card p-3">Club Sandwich <span class="badge bg-success">Rs 650</span></div></div>
+      <div class="col-6 col-md-4 col-lg-3 item" data-category="food"><div class="card p-3">Chicken Paratha Roll <span class="badge bg-success">Rs 400</span></div></div>
+      <div class="col-6 col-md-4 col-lg-3 item" data-category="food"><div class="card p-3">Loaded Fries <span class="badge bg-success">Rs 450</span></div></div>
+    </div>
+    <p id="noResults" class="text-center text-muted mt-3" style="display: none;">No items found.</p>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
