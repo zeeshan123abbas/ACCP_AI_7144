@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Session 16: The home page UI written in XAML -->
+<ContentPage
+    x:Class="HelloMaui.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Student Greeter">
+
+    <ScrollView>
+        <!-- VerticalStackLayout places children one below another -->
+        <VerticalStackLayout Padding="30" Spacing="15">
+
+            <Label Text="Welcome to .NET MAUI" FontSize="26" FontAttributes="Bold" />
+
+            <!-- Entry = a one-line text box -->
+            <Entry x:Name="NameEntry" Placeholder="Type your name" />
+
+            <!-- Clicked="..." links the button to a C# method -->
+            <Button x:Name="GreetButton" Text="Greet me" Clicked="OnGreetClicked" />
+
+            <Label x:Name="ResultLabel" FontSize="18" />
+
+            <Button Text="Open details page" Clicked="OnDetailsClicked" />
+
+            <Label x:Name="DeviceLabel" FontSize="14" TextColor="Gray" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
