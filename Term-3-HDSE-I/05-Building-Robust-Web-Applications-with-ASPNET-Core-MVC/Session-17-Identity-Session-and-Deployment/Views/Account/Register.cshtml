@@ -1,0 +1,9 @@
+@model AccountModel
+<h1>Register</h1>
+<form asp-action="Register" method="post">
+    <div asp-validation-summary="All" style="color:red"></div>
+    <p><label asp-for="Email"></label> <input asp-for="Email" /></p>
+    <p><label asp-for="Password"></label> <input asp-for="Password" /></p>
+    <button type="submit">Create account</button>
+</form>
+<a asp-action="Login">Already have an account?</a>
