@@ -1,41 +1,41 @@
-"""Session 03 - Extractive summarization with TF-IDF sentence scoring.
+"""Session 03 - Example 1: extractive summarization by word frequency.
 
-Extractive = pick the most important ORIGINAL sentences.
-No neural network needed; runs instantly with scikit-learn.
+Extractive = choose the most important ORIGINAL sentences.
+Idea: a sentence is important if it contains words that appear often in the article.
+Run: python extractive_summary.py   (needs only Python)
 """
 import re
-import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 
-ARTICLE = """
-Karachi's public transport is changing quickly. The new electric bus service started on two
-routes last year and now carries thousands of passengers every day. Commuters say the buses
-are cleaner and cheaper than rickshaws. The city government plans to add four more routes by
-next summer. However, traffic experts warn that buses alone cannot fix congestion. They argue
-that dedicated bus lanes and better footpaths are also needed. Some shopkeepers along the
-routes complained about lost parking spaces. Officials replied that more customers now arrive
-by bus. A survey found that most riders would leave their motorbikes at home if service were
-more frequent. The project is being watched closely by other cities in Pakistan.
-"""
+ARTICLE = """Karachi's new electric bus service started on two routes last year.
+The buses now carry thousands of passengers every day.
+Passengers say the electric buses are cleaner and cheaper than rickshaws.
+The city plans to add four more bus routes by next summer.
+Some shopkeepers complained about lost parking spaces.
+Experts say bus lanes are needed so the buses do not get stuck in traffic."""
 
-def summarize(text, n_sentences=3):
-    sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+", text.strip()) if s.strip()]
-    tfidf = TfidfVectorizer(stop_words="english").fit_transform(sentences)
-    # Score 1: how important the words in each sentence are
-    word_score = np.asarray(tfidf.sum(axis=1)).ravel()
-    # Score 2: how similar each sentence is to the document as a whole (centrality)
-    centroid = np.asarray(tfidf.mean(axis=0))
-    centrality = cosine_similarity(tfidf, centroid).ravel()
-    score = 0.5 * word_score / word_score.max() + 0.5 * centrality / centrality.max()
-    top = sorted(np.argsort(score)[-n_sentences:])          # keep original order
-    return [sentences[i] for i in top], score
+STOP_WORDS = {"the", "a", "and", "are", "is", "to", "on", "by", "of", "in", "than",
+              "so", "do", "not", "get", "say", "some", "about", "now", "every", "more"}
 
-summary, scores = summarize(ARTICLE)
-print("Sentence scores:", np.round(scores, 2))
+# Step 1: split the article into sentences
+sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+", ARTICLE) if s.strip()]
+
+# Step 2: count how often each useful word appears in the whole article
+word_counts = {}
+for word in re.findall(r"[a-z']+", ARTICLE.lower()):
+    if word not in STOP_WORDS:
+        word_counts[word] = word_counts.get(word, 0) + 1
+
+# Step 3: give every sentence a score = total count of its words
+scores = []
+for sentence in sentences:
+    words = re.findall(r"[a-z']+", sentence.lower())
+    score = sum(word_counts.get(word, 0) for word in words)
+    scores.append(score)
+    print(f"score {score:>2} | {sentence}")
+
+# Step 4: pick the 2 best sentences, then keep them in their original order
+best_positions = sorted(range(len(sentences)), key=lambda i: scores[i], reverse=True)[:2]
+summary = [sentences[i] for i in sorted(best_positions)]
+
 print("\nSUMMARY:")
-for s in summary:
-    print(" -", s)
-original_words = len(ARTICLE.split())
-summary_words = sum(len(s.split()) for s in summary)
-print(f"\nCompression: {original_words} -> {summary_words} words")
+print(" ".join(summary))
