@@ -1,0 +1,7 @@
+@model ActionsApi.Models.Product
+<link rel="stylesheet" href="/css/bundle.css" />
+<h1>@ViewData["Title"]</h1>
+<p>Shop: @ViewBag.Shop</p>
+<p><b>@Model.Name</b> costs Rs. @Model.Price</p>
+<a href="/Products/Buy/@Model.Id">Buy</a>
+<script src="/js/bundle.js"></script>
