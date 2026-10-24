@@ -1,0 +1,21 @@
+<!-- Lab 10 - Task 3: inbound policy for the Feedback API -->
+<!-- "func-key" is a Named value in APIM (ideally linked to Key Vault) -->
+<policies>
+    <inbound>
+        <base />
+        <!-- add the function key so callers never see it -->
+        <set-header name="x-functions-key" exists-action="override">
+            <value>{{func-key}}</value>
+        </set-header>
+        <rate-limit calls="5" renewal-period="60" />
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>
