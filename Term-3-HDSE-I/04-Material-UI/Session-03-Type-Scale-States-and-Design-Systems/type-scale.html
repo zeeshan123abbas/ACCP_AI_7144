@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Material 3 Type Scale</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="type-scale.css" />
+  <style>
+    body { font-family: Roboto, Arial, sans-serif; padding: 24px; color: #1d1b20; }
+    p, h1, h2, h3 { margin: 0 0 12px; }
+    .card { max-width: 360px; padding: 16px; border-radius: 12px; background: #f3edf7; margin-top: 32px; }
+  </style>
+</head>
+<body>
+  <!-- 1. The full scale -->
+  <p class="display-large">Display Large</p>
+  <p class="headline-medium">Headline Medium</p>
+  <p class="title-large">Title Large</p>
+  <p class="body-large">Body Large: long paragraphs of reading text.</p>
+  <p class="label-large">LABEL LARGE (buttons, tabs)</p>
+
+  <!-- 2. The scale used in a real card: each role has one job -->
+  <div class="card">
+    <p class="label-medium">NEW BATCH</p>
+    <h2 class="headline-small">Angular for Beginners</h2>
+    <h3 class="title-medium">Starts 2 November · Evening</h3>
+    <p class="body-medium">Build single-page apps with TypeScript, routing, forms and Material components.</p>
+    <p class="body-small">Seats are limited to 25 students.</p>
+  </div>
+</body>
+</html>
