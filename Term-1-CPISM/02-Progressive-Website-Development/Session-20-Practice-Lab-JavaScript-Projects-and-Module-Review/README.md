@@ -299,6 +299,6 @@ Understanding DOM, events, state and rendering, modules and async data means fra
 
 ---
 
-[⬅ Previous](../Session-19-Geolocation-Drag-and-Drop-Mobile-Websites-and-Mini-Project/README.md) · [🏠 Module Home](../README.md) · [Next ➡](../../eProject/README.md)
+[⬅ Previous](../Session-19-Geolocation-Drag-and-Drop-Mobile-Websites-and-Mini-Project/README.md) · [🏠 Module Home](../README.md) · [Next ➡](../../03-Bootstrap-and-jQuery-for-Responsive-Web-Pages/README.md)
 
 Prepared by Zeeshan Abbas · Aptech Learning North Nazimabad
