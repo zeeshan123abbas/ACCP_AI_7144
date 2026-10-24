@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Widgets</title>
+  <!-- jQuery UI needs its own CSS theme -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+  <style> body { font-family: system-ui, sans-serif; max-width: 600px; margin: 2rem auto; } </style>
+</head>
+<body>
+  <h1>jQuery UI</h1>
+
+  <!-- 1. Datepicker -->
+  <label for="classDate">Pick a class date:</label>
+  <input type="text" id="classDate" readonly>
+
+  <!-- 2. Dialog (hidden until opened) -->
+  <p><button id="openDialog">Show rules</button></p>
+  <div id="rules" title="Lab Rules">
+    <p>No food in the lab. Save your work every 10 minutes.</p>
+  </div>
+
+  <!-- 3. Accordion: h3 = header, div = panel -->
+  <div id="faq">
+    <h3>What is jQuery UI?</h3>
+    <div><p>A set of ready widgets and effects built on top of jQuery.</p></div>
+    <h3>Is it free?</h3>
+    <div><p>Yes, it is open source (MIT licence).</p></div>
+  </div>
+
+  <!-- Load order: jQuery, then jQuery UI -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
+  <script>
+    $(function () {
+      // Turn the input into a calendar. minDate: 0 = no past dates
+      $("#classDate").datepicker({ dateFormat: "dd-mm-yy", minDate: 0 });
+
+      // Create the dialog but keep it closed at first
+      $("#rules").dialog({ autoOpen: false, modal: true });
+      $("#openDialog").on("click", function () {
+        $("#rules").dialog("open");
+      });
+
+      // Accordion: collapsible lets the user close all panels
+      $("#faq").accordion({ collapsible: true });
+    });
+  </script>
+</body>
+</html>
