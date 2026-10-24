@@ -1,0 +1,11 @@
+@model List<SchoolData.Models.Student>
+
+<h1>Students (EF Core)</h1>
+<table border="1" cellpadding="6">
+    <tr><th>Id</th><th>Name</th><th>Age</th></tr>
+    @foreach (var s in Model)
+    {
+        <tr><td>@s.Id</td><td>@s.Name</td><td>@s.Age</td></tr>
+    }
+</table>
+<p><a href="/Students/Ado">See adults using ADO.NET</a></p>
