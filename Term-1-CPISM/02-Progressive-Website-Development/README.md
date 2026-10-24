@@ -78,6 +78,6 @@
 
 ---
 
-[🏠 Term Home](../README.md) · [Start Session 01 ➡](./Session-01-Intro-to-Web-HTML5-Text-and-Links/README.md) · [Next ➡](../eProject/README.md)
+[🏠 Term Home](../README.md) · [Start Session 01 ➡](./Session-01-Intro-to-Web-HTML5-Text-and-Links/README.md) · [Next ➡](../03-Bootstrap-and-jQuery-for-Responsive-Web-Pages/README.md)
 
 Prepared by Zeeshan Abbas · Aptech Learning North Nazimabad
