@@ -56,7 +56,7 @@ Free sources: Google autocomplete, "People also ask", "Related searches", Google
 
 | Element | Weak | Strong |
 |---------|------|--------|
-| Title | `Home` | `Evening Web Design Course in North Nazimabad | Karachi Tech Hub` |
+| Title | `Home` | `Evening Web Design Course North Nazimabad | Karachi Tech Hub` |
 | Description | `Welcome to our website.` | `Learn HTML, CSS and JavaScript in 12 weeks. Evening classes, small batches and a portfolio project. Book a free demo class today.` |
 | URL | `/page.php?id=27` | `/courses/web-design-evening` |
 | H1 | (none) | `Evening Web Design Course` |
@@ -104,7 +104,7 @@ Track your outreach in [`backlink-tracker.csv`](backlink-tracker.csv).
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Evening Web Design Course in North Nazimabad | Karachi Tech Hub</title>
+  <title>Evening Web Design Course North Nazimabad | Karachi Tech Hub</title>
   <meta name="description" content="Learn HTML, CSS and JavaScript in 12 weeks. Evening classes, small batches and a portfolio project. Book a free demo class today.">
   <link rel="canonical" href="https://www.example.com/courses/web-design-evening">
 </head>
