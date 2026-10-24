@@ -1,0 +1,13 @@
+@model TaskItem
+<tr>
+    <td>@Model.Title</td>
+    <td>@(Model.IsDone ? "Done" : "Pending")</td>
+    <td>
+        @if (!Model.IsDone)
+        {
+            <form asp-action="Complete" asp-route-id="@Model.Id" method="post">
+                <button type="submit">Mark done</button>
+            </form>
+        }
+    </td>
+</tr>
