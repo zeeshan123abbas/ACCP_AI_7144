@@ -1,0 +1,41 @@
+/* tokens.css - Material 3 style design tokens as CSS custom properties */
+
+:root {
+  /* ---------- 1. REFERENCE tokens: raw values (the palette) ---------- */
+  --md-ref-palette-primary40: #6750a4;
+  --md-ref-palette-primary90: #eaddff;
+  --md-ref-palette-primary10: #21005d;
+  --md-ref-palette-neutral99: #fffbfe;
+  --md-ref-palette-neutral10: #1c1b1f;
+  --md-ref-palette-error40: #b3261e;
+  --md-ref-typeface-brand: "Roboto", Arial, sans-serif;
+
+  /* ---------- 2. SYSTEM tokens: roles that point to reference tokens ---------- */
+  --md-sys-color-primary: var(--md-ref-palette-primary40);
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: var(--md-ref-palette-primary90);
+  --md-sys-color-on-primary-container: var(--md-ref-palette-primary10);
+  --md-sys-color-surface: var(--md-ref-palette-neutral99);
+  --md-sys-color-on-surface: var(--md-ref-palette-neutral10);
+  --md-sys-color-outline: #79747e;
+  --md-sys-color-error: var(--md-ref-palette-error40);
+  --md-sys-shape-corner-full: 9999px;
+  --md-sys-shape-corner-small: 8px;
+
+  /* ---------- 3. COMPONENT tokens: one component, pointing to system tokens ---------- */
+  --md-comp-filled-button-container-color: var(--md-sys-color-primary);
+  --md-comp-filled-button-label-text-color: var(--md-sys-color-on-primary);
+  --md-comp-filled-button-container-shape: var(--md-sys-shape-corner-full);
+  --md-comp-text-field-outline-color: var(--md-sys-color-outline);
+  --md-comp-text-field-focus-outline-color: var(--md-sys-color-primary);
+}
+
+/* A dark theme only changes SYSTEM tokens; components update automatically.
+   It is set on the same element as the tokens (<html>), so the var() links re-calculate. */
+:root.dark-theme {
+  --md-sys-color-primary: #d0bcff;
+  --md-sys-color-on-primary: #381e72;
+  --md-sys-color-surface: #141218;
+  --md-sys-color-on-surface: #e6e0e9;
+  --md-sys-color-outline: #938f99;
+}
