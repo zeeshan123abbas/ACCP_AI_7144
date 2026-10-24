@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responsive Breakpoints</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container my-4">
+    <h1 class="h3">Resize the browser window</h1>
+    <p>Phone: 1 card per row · Tablet (md): 2 per row · Desktop (lg): 4 per row</p>
+
+    <!-- col-12 = full width on phones
+         col-md-6 = half width from 768px
+         col-lg-3 = quarter width from 992px -->
+    <div class="row g-3">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="p-3 bg-primary text-white rounded">HTML</div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="p-3 bg-success text-white rounded">CSS</div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="p-3 bg-warning rounded">JavaScript</div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="p-3 bg-danger text-white rounded">Bootstrap</div>
+      </div>
+    </div>
+
+    <!-- This badge tells you which breakpoint is active right now -->
+    <p class="mt-4">
+      Current screen:
+      <span class="badge bg-dark d-inline d-sm-none">XS (phone)</span>
+      <span class="badge bg-dark d-none d-sm-inline d-md-none">SM</span>
+      <span class="badge bg-dark d-none d-md-inline d-lg-none">MD (tablet)</span>
+      <span class="badge bg-dark d-none d-lg-inline d-xl-none">LG (laptop)</span>
+      <span class="badge bg-dark d-none d-xl-inline">XL or bigger</span>
+    </p>
+  </div>
+</body>
+</html>
