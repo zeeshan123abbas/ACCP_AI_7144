@@ -1,53 +1,50 @@
-"""Session 01 - From NLP to NLU: intent detection, slot filling and dialogue state.
+"""Session 01 - Example 4: NLU = intent detection + slot filling + dialogue state.
 
-A food-ordering assistant must understand WHAT the user wants (intent),
-the DETAILS (slots), and remember them across turns (dialogue state).
+A food-ordering bot must know WHAT the user wants (intent),
+the DETAILS (slots) and REMEMBER them across turns (dialogue state).
+Run: python nlu_intent_slots.py
 """
-import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
 
-TRAIN = [
-    ("I want to order a pizza", "order_food"), ("get me two burgers please", "order_food"),
-    ("can I have biryani for dinner", "order_food"), ("order three shawarmas", "order_food"),
-    ("where is my order", "track_order"), ("how long until my food arrives", "track_order"),
-    ("is the rider close", "track_order"), ("track my delivery", "track_order"),
-    ("cancel my order", "cancel_order"), ("I don't want the food anymore", "cancel_order"),
-    ("please stop the delivery", "cancel_order"), ("cancel it", "cancel_order"),
-    ("hello", "greet"), ("hi there", "greet"), ("assalam o alaikum", "greet"), ("good evening", "greet"),
+# Step 1: a tiny training set of (sentence, intent)
+training_sentences = [
+    "I want to order a pizza", "get me two burgers", "can I have biryani", "order a shawarma",
+    "where is my order", "track my delivery", "how long will my food take", "is the rider close",
+    "cancel my order", "I do not want the food", "stop my delivery", "please cancel it",
 ]
-texts, labels = zip(*TRAIN)
-intent_model = make_pipeline(TfidfVectorizer(ngram_range=(1, 2)), LogisticRegression(max_iter=1000))
-intent_model.fit(texts, labels)
+training_intents = [
+    "order_food", "order_food", "order_food", "order_food",
+    "track_order", "track_order", "track_order", "track_order",
+    "cancel_order", "cancel_order", "cancel_order", "cancel_order",
+]
 
-NUMBERS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5}
-DISHES = ["pizza", "burger", "biryani", "shawarma", "karahi"]
+# Step 2: train an intent classifier (TF-IDF numbers + logistic regression)
+intent_model = make_pipeline(TfidfVectorizer(), LogisticRegression())
+intent_model.fit(training_sentences, training_intents)
 
-def extract_slots(text):
-    """Slot filling with simple rules: quantity, dish, time."""
-    t = text.lower()
+# Step 3: slot filling with simple keyword rules
+DISHES = ["pizza", "burger", "biryani", "shawarma"]
+NUMBERS = {"one": 1, "two": 2, "three": 3}
+
+def find_slots(sentence):
     slots = {}
-    # a quantity counts only when it is directly followed by a dish name
-    m = re.search(r"\b(\d+|one|two|three|four|five)\s+(?:%s)" % "|".join(DISHES), t)
-    if m:
-        slots["quantity"] = int(NUMBERS.get(m.group(1), m.group(1)))
-    for dish in DISHES:
-        if dish in t:
-            slots["dish"] = dish
-    m = re.search(r"\b(at \d{1,2}(:\d{2})?\s?(am|pm)?|tonight|now)\b", t)
-    if m:
-        slots["time"] = m.group(1)
+    for word in sentence.lower().split():
+        if word in NUMBERS:
+            slots["quantity"] = NUMBERS[word]
+        for dish in DISHES:
+            if word.startswith(dish):          # "pizzas" also matches "pizza"
+                slots["dish"] = dish
     return slots
 
-state = {"intent": None, "slots": {}}          # dialogue state tracking
-conversation = ["Hi there", "I want to order two pizzas", "make it at 8 pm", "where is my order"]
-for turn in conversation:
-    intent = intent_model.predict([turn])[0]
-    slots = extract_slots(turn)
-    # a follow-up with only details keeps the previous intent
-    if slots and not any(w in turn.lower() for w in ["order", "want", "get"]) and state["intent"]:
-        intent = state["intent"]
-    state["intent"] = intent
-    state["slots"].update(slots)
-    print(f"USER: {turn!r}\n   intent={intent:<13} new_slots={slots}  state={state['slots']}")
+# Step 4: dialogue state = what we remember so far in this conversation
+state = {}
+
+conversation = ["I want to order two pizzas", "where is my order", "please cancel it"]
+for user_text in conversation:
+    intent = intent_model.predict([user_text])[0]
+    slots = find_slots(user_text)
+    state.update(slots)                        # remember new details
+    print(f"USER : {user_text}")
+    print(f"  intent = {intent}, slots = {slots}, remembered = {state}")
