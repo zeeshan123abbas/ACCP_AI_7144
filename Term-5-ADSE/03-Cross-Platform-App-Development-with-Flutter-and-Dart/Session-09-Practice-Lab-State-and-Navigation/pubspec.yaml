@@ -1,0 +1,17 @@
+# pubspec.yaml (only the important parts for this lab)
+name: study_todo
+description: Session 09 lab - Provider + go_router to-do app.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.1.2
+  go_router: ^14.8.1
+
+flutter:
+  uses-material-design: true
