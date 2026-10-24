@@ -1,0 +1,18 @@
+# pubspec.yaml (only the important parts for this session)
+name: state_demo
+description: Session 07 state management examples.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.1.2          # Provider + ChangeNotifier
+  flutter_riverpod: ^2.6.1  # Riverpod (intro example)
+  flutter_bloc: ^9.0.0      # BLoC / Cubit (intro example)
+
+flutter:
+  uses-material-design: true
