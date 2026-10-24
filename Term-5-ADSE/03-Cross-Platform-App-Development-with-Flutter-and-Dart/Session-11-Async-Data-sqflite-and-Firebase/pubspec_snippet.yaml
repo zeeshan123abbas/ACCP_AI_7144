@@ -1,0 +1,9 @@
+# Add these under "dependencies:" in pubspec.yaml
+# (or run: flutter pub add sqflite path firebase_core cloud_firestore)
+dependencies:
+  flutter:
+    sdk: flutter
+  sqflite: ^2.4.5          # local SQLite database (Android, iOS, macOS)
+  path: ^1.9.1             # helps build the database file path
+  firebase_core: ^5.1.0    # needed by every Firebase package
+  cloud_firestore: ^7.1.0  # Firebase cloud database
