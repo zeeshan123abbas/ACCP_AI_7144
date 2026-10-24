@@ -1,0 +1,38 @@
+# CD = Continuous Deployment: automatically PUBLISH the site when main changes.
+# Save as: .github/workflows/deploy-pages.yml
+# One-time setting: repo Settings -> Pages -> Source: "GitHub Actions".
+
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:             # adds a "Run workflow" button for manual runs
+
+# The workflow needs permission to publish to Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}   # live link shown in the run
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Pages
+        uses: actions/configure-pages@v5
+
+      - name: Package the website files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .                # upload the whole repo folder (index.html must be here)
+
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
