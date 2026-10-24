@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- Session 05 · English (Pakistan) version of a page that also exists in Urdu (Pakistan) and English (UAE) -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Online Web Design Course | Karachi Tech Hub Pakistan</title>
+  <meta name="description" content="Join our online web design course from anywhere in Pakistan. Live classes, recorded lessons and fees in PKR.">
+
+  <!-- This page's own official URL -->
+  <link rel="canonical" href="https://www.example.com/en-pk/">
+
+  <!-- Step 1: List EVERY language/region version, including this page itself -->
+  <link rel="alternate" hreflang="en-pk" href="https://www.example.com/en-pk/">
+  <link rel="alternate" hreflang="ur-pk" href="https://www.example.com/ur-pk/">
+  <link rel="alternate" hreflang="en-ae" href="https://www.example.com/en-ae/">
+
+  <!-- Step 2: Fallback for everyone else -->
+  <link rel="alternate" hreflang="x-default" href="https://www.example.com/">
+</head>
+<body>
+  <!-- Step 3: A visible language switcher (never force-redirect by IP) -->
+  <nav aria-label="Choose language and region">
+    <a href="https://www.example.com/en-pk/" lang="en">English (Pakistan)</a> |
+    <a href="https://www.example.com/ur-pk/" lang="ur">اردو (پاکستان)</a> |
+    <a href="https://www.example.com/en-ae/" lang="en">English (UAE)</a>
+  </nav>
+
+  <main>
+    <h1>Online Web Design Course</h1>
+    <!-- Step 4: Localized details: currency, timing, phone format for Pakistan -->
+    <p>Fee: PKR 45,000 · Classes: 7 pm to 9 pm PKT · WhatsApp: +92 300 0000000</p>
+  </main>
+</body>
+</html>
