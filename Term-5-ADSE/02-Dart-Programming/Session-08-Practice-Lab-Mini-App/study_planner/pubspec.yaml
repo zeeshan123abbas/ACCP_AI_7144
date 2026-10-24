@@ -1,0 +1,11 @@
+# Study Planner - a console mini app that ties the whole module together.
+name: study_planner
+description: Add, complete and save study tasks from the command line.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+dev_dependencies:
+  test: ^1.25.0
