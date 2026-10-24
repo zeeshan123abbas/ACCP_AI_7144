@@ -1,0 +1,8 @@
+@page
+@model HelloModel
+<h1>Razor Page demo</h1>
+<form method="post">
+    <input asp-for="Name" placeholder="Your name" />
+    <button type="submit">Greet</button>
+</form>
+<p>@Model.Message</p>
