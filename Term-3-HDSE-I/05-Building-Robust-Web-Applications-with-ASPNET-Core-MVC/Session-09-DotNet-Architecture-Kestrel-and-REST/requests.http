@@ -1,0 +1,21 @@
+@host = http://localhost:5050
+
+GET {{host}}/api/books
+
+###
+GET {{host}}/api/books/1
+
+###
+POST {{host}}/api/books
+Content-Type: application/json
+
+{ "title": "C# in Depth", "author": "Jon Skeet" }
+
+###
+PUT {{host}}/api/books/1
+Content-Type: application/json
+
+{ "title": "Clean Code (2nd ed.)", "author": "Robert C. Martin" }
+
+###
+DELETE {{host}}/api/books/2
