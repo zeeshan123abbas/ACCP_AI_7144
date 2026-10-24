@@ -1,0 +1,23 @@
+<!-- result-card.component.html -->
+<div class="card">
+  <h2>{{ studentName }}</h2>
+  <p>Average: <strong>{{ average }}</strong></p>
+
+  <!-- Class binding: green when passed, red when failed -->
+  <p [class.pass]="average >= 50" [class.fail]="average < 50">
+    {{ average >= 50 ? 'PASS' : 'FAIL' }}
+  </p>
+
+  <button (click)="toggleDetails()">
+    {{ showDetails ? 'Hide' : 'Show' }} details
+  </button>
+
+  <!-- @for repeats the row for every subject; $index is the position -->
+  @if (showDetails) {
+    <ul>
+      @for (subject of subjects; track subject; let i = $index) {
+        <li>{{ subject }}: {{ marks[i] }}</li>
+      }
+    </ul>
+  }
+</div>
