@@ -1,0 +1,6 @@
+/* Our own styles load after Bootstrap, so they win */
+.quote {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #0d6efd;
+}
