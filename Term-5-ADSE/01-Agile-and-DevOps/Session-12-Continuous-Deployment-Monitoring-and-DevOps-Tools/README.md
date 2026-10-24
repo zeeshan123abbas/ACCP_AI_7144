@@ -368,6 +368,6 @@ Git push → GitHub Actions runs `flutter analyze` and `flutter test` → builds
 
 ---
 
-[⬅ Previous](../Session-11-DevOps-Configuration-Management-and-CI-CD/README.md) · [🏠 Module Home](../README.md) · Next ➡
+[⬅ Previous](../Session-11-DevOps-Configuration-Management-and-CI-CD/README.md) · [🏠 Module Home](../README.md) · [Next Module ➡](../../02-Dart-Programming/README.md)
 
 Prepared by Zeeshan Abbas · Aptech Learning North Nazimabad
