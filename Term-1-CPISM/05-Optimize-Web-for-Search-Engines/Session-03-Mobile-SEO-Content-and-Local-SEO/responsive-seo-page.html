@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- Session 03 · A small, fast, mobile-friendly page. Test it with DevTools device mode + Lighthouse. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Step 1: Viewport (without it phones show a tiny desktop page) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learn Web Design in Karachi | Karachi Tech Hub</title>
+  <meta name="description" content="Mobile-friendly demo page: responsive images, readable text and big tap targets for a web design course in Karachi.">
+
+  <!-- Step 2: Small CSS inside the page (no extra file to download) -->
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      font-size: 1rem;          /* 16px: readable on phones */
+      line-height: 1.6;
+      margin: 0;
+      color: #222;
+    }
+    main {
+      max-width: 800px;         /* comfortable reading width */
+      margin: auto;
+      padding: 1rem;
+    }
+    img {
+      max-width: 100%;          /* images never overflow the screen */
+      height: auto;
+    }
+    .button {
+      display: inline-block;
+      min-height: 48px;         /* big enough to tap with a thumb */
+      padding: 12px 24px;
+      background: #0b57d0;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Learn Web Design in Karachi</h1>
+
+    <!-- Step 3: Hero image. Phone downloads the small file; size is reserved; loads first -->
+    <img src="hero-800.webp"
+         srcset="hero-400.webp 400w, hero-800.webp 800w, hero-1600.webp 1600w"
+         sizes="(max-width: 600px) 100vw, 800px"
+         alt="Students coding in a bright computer lab"
+         width="800" height="450" fetchpriority="high">
+
+    <p>Build real websites in 12 weeks with HTML5, CSS3 and JavaScript.</p>
+
+    <!-- Step 4: A large, clear call-to-action button -->
+    <p><a class="button" href="/contact">Book a free demo class</a></p>
+
+    <h2>What is responsive design?</h2>
+    <!-- Step 5: A short direct answer under a question heading (featured-snippet style) -->
+    <p>Responsive design is a way of building one website that automatically adjusts its layout,
+       images and text to fit any screen, from a small phone to a large desktop monitor.</p>
+
+    <!-- Step 6: Images further down the page are lazy-loaded -->
+    <img src="project-gallery.webp" alt="Three student websites shown on phone, tablet and laptop"
+         width="800" height="500" loading="lazy">
+  </main>
+</body>
+</html>
