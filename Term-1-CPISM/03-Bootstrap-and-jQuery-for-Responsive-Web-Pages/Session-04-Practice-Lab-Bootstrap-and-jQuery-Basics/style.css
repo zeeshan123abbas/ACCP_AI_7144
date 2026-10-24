@@ -1,0 +1,22 @@
+/* Details text is hidden at the start; jQuery shows it */
+.details {
+  display: none;
+}
+
+/* Card lifts a little when the mouse is over it (class added by jQuery) */
+.service.hovered {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  transition: all 0.2s;
+}
+
+/* Dark mode: jQuery adds this class to <body> */
+body.dark {
+  background: #1e1e1e;
+  color: #f1f1f1;
+}
+
+body.dark .card {
+  background: #2b2b2b;
+  color: #f1f1f1;
+}
