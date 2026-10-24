@@ -1,0 +1,5 @@
+# Run: flutter pub add http
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.6.0
