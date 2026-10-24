@@ -1,0 +1,11 @@
+### Get all products
+GET http://localhost:5000/api/products
+
+### Get one product
+GET http://localhost:5000/api/products/2
+
+### Create a product
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{ "name": "Monitor", "price": 30000 }
