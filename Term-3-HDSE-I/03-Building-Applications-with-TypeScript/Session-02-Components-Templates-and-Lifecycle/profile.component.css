@@ -1,0 +1,12 @@
+/* profile.component.css - these styles only affect this component */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  width: 220px;
+  text-align: center;
+}
+.online {
+  color: green;
+  font-weight: bold;
+}
