@@ -1,38 +1,41 @@
-"""Session 02 - Rule-based and dictionary-based NER.
+"""Session 02 - Example 1: rule-based NER (dictionary + regular expressions).
 
-Fast, transparent and needs no training data, but brittle.
+No training data needed. Fast and easy to explain, but it only finds
+what you wrote rules for.
+Run: python ner_rule_based.py
 """
 import re
 
-GAZETTEER = {   # dictionary (gazetteer) of known entities
-    "LOC": ["Karachi", "Lahore", "Islamabad", "North Nazimabad", "Dubai"],
-    "ORG": ["Aptech", "State Bank of Pakistan", "PTCL", "Hugging Face"],
-}
-PATTERNS = {    # regular-expression patterns
-    "EMAIL": r"[\w.+-]+@[\w-]+\.[\w.]+",
-    "PHONE": r"(?:\+92|0)3\d{2}-?\d{7}",
-    "DATE": r"\b\d{1,2}\s(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s\d{4}\b",
-    "MONEY": r"\b(?:Rs\.?|PKR)\s?[\d,]+\b",
+# Step 1: a dictionary (gazetteer) of names we already know
+KNOWN_ENTITIES = {
+    "Karachi": "LOCATION",
+    "Lahore": "LOCATION",
+    "Aptech": "ORGANIZATION",
+    "State Bank of Pakistan": "ORGANIZATION",
 }
 
-def find_entities(text):
-    found = []
-    for label, names in GAZETTEER.items():
-        for name in names:
-            for m in re.finditer(re.escape(name), text):
-                found.append((m.start(), m.end(), m.group(), label))
-    for label, pattern in PATTERNS.items():
-        for m in re.finditer(pattern, text):
-            found.append((m.start(), m.end(), m.group(), label))
-    # remove entities nested inside longer ones (e.g. 'Karachi' inside a longer match)
-    found.sort(key=lambda e: (e[0], -(e[1] - e[0])))
-    result, last_end = [], -1
-    for e in found:
-        if e[0] >= last_end:
-            result.append(e); last_end = e[1]
-    return result
+# Step 2: patterns for entities that follow a fixed shape
+PATTERNS = {
+    "EMAIL": r"[\w.]+@[\w.]+\.\w+",                # name@site.com
+    "PHONE": r"03\d{2}-\d{7}",                     # 0300-1234567
+    "MONEY": r"Rs\. ?[\d,]+",                      # Rs. 2,500
+}
 
-text = ("Aptech North Nazimabad in Karachi will hold an AI seminar on 14 November 2026. "
-        "Registration costs Rs. 2,500. Contact info@example.com or 0300-1234567.")
-for start, end, span, label in find_entities(text):
-    print(f"{label:<6} {span!r:<28} chars {start}-{end}")
+text = ("Aptech in Karachi will hold an AI seminar. The fee is Rs. 2,500. "
+        "Contact info@example.com or 0300-1234567.")
+
+found = []
+
+# Step 3: look for every known name in the text
+for name, label in KNOWN_ENTITIES.items():
+    if name in text:
+        found.append((name, label))
+
+# Step 4: look for every pattern in the text
+for label, pattern in PATTERNS.items():
+    for match in re.findall(pattern, text):
+        found.append((match, label))
+
+# Step 5: print the results
+for entity, label in found:
+    print(f"{label:<13} {entity}")
