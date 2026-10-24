@@ -1,0 +1,10 @@
+@model List<Book>
+<h1>Library</h1>
+<a asp-action="Create">+ Add book</a>
+<table border="1" cellpadding="6">
+    <tr><th>Title</th><th>Author</th><th>Year</th></tr>
+    @foreach (var b in Model)
+    {
+        <tr><td>@b.Title</td><td>@b.Author</td><td>@b.Year</td></tr>
+    }
+</table>
