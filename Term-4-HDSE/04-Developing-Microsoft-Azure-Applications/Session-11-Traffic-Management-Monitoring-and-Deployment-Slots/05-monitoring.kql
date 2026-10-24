@@ -1,0 +1,17 @@
+// Session 11 - Example 5: monitoring queries (Application Insights > Logs)
+
+// 1. Requests per minute and average response time - spot traffic spikes
+requests
+| where timestamp > ago(30m)
+| summarize calls = count(), avgMs = avg(duration) by bin(timestamp, 1m)
+| render timechart
+
+// 2. Which server instance answered (useful with several instances or slots)
+requests
+| summarize calls = count() by cloud_RoleName, cloud_RoleInstance
+
+// 3. Exceptions from the /error test endpoint, with the failing method
+exceptions
+| where timestamp > ago(1h)
+| project timestamp, type, outerMessage, method
+| order by timestamp desc
