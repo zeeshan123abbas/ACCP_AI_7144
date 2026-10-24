@@ -100,31 +100,7 @@ export class WelcomeComponent {
 
 ### Example 2: Separate template and styles
 
-📄 File: [`profile.component.ts`](profile.component.ts)
-
-```typescript
-// profile.component.ts - template and styles kept in separate files
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-profile',
-  standalone: true,
-  templateUrl: './profile.component.html', // HTML lives here
-  styleUrl: './profile.component.css',     // CSS lives here
-})
-export class ProfileComponent {
-  name = 'Usman Khan';
-  course = 'HDSE I';
-  photoUrl = 'https://placehold.co/100x100';
-  isOnline = true;
-  likes = 0;
-
-  // A method that runs when the button is clicked
-  addLike(): void {
-    this.likes = this.likes + 1;
-  }
-}
-```
+📄 Class: [`profile.component.ts`](profile.component.ts) holds `name`, `course`, `photoUrl`, `isOnline`, `likes` and an `addLike()` method, and points to its HTML and CSS with `templateUrl` and `styleUrl`.
 
 📄 File: [`profile.component.html`](profile.component.html)
 
@@ -195,36 +171,6 @@ export class LifecycleDemoComponent implements OnInit, OnDestroy {
 ### Example 5: Root component
 
 📄 File: [`app.component.ts`](app.component.ts)
-
-```typescript
-// app.component.ts - the root component shows all the demos
-import { Component } from '@angular/core';
-import { WelcomeComponent } from './welcome.component';
-import { ProfileComponent } from './profile.component';
-import { LifecycleDemoComponent } from './lifecycle-demo.component';
-import { ViewChildDemoComponent } from './view-child-demo.component';
-
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  // A standalone component lists the components it uses here
-  imports: [WelcomeComponent, ProfileComponent, LifecycleDemoComponent, ViewChildDemoComponent],
-  template: `
-    <app-welcome />
-    <app-profile />
-
-    <button (click)="showTimer = !showTimer">Toggle timer</button>
-    @if (showTimer) {
-      <app-lifecycle-demo />
-    }
-
-    <app-view-child-demo />
-  `,
-})
-export class AppComponent {
-  showTimer = true;
-}
-```
 
 **How it works:** `imports` lists the child components; `@if` shows the timer only when `showTimer` is true.
 
