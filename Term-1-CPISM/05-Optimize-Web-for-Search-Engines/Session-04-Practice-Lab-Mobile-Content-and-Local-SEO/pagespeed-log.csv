@@ -1,0 +1,4 @@
+date,page_url,device,performance,seo,accessibility,lcp_seconds,cls,fix_applied
+YYYY-MM-DD,https://username.github.io/site/,mobile,,,,,,baseline - before any change
+YYYY-MM-DD,https://username.github.io/site/,mobile,,,,,,compressed hero image to WebP + added width/height
+YYYY-MM-DD,https://username.github.io/site/,mobile,,,,,,added loading=lazy to images below the fold
