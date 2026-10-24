@@ -1,0 +1,15 @@
+# A small app that USES two packages:
+#  1. intl            -> downloaded from pub.dev (a "hosted" dependency)
+#  2. grade_calculator -> our own package, taken from a local folder (a "path" dependency)
+name: report_app
+description: Prints a result card using the grade_calculator package.
+version: 1.0.0
+publish_to: none # this app is not meant for pub.dev
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  intl: ^0.20.0            # caret (^) = any 0.20.x version, but not 0.21.0
+  grade_calculator:
+    path: ../grade_calculator
