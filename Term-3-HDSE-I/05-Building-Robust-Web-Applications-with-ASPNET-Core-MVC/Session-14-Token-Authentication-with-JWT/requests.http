@@ -1,0 +1,20 @@
+@host = http://localhost:5000
+
+### 1. Login and copy the token from the response
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "userName": "admin", "password": "Admin@123" }
+
+### 2. Paste the token after "Bearer "
+@token = PASTE_TOKEN_HERE
+
+GET {{host}}/api/profile
+Authorization: Bearer {{token}}
+
+###
+GET {{host}}/api/profile/admin
+Authorization: Bearer {{token}}
+
+### 3. No token -> 401
+GET {{host}}/api/profile
