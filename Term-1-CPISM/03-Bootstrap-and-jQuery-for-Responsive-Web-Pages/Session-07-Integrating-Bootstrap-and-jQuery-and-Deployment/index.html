@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bright Tutors - one-page demo built with Bootstrap 5 and jQuery">
+  <title>Bright Tutors</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- fixed-top keeps the navbar visible while scrolling -->
+  <nav class="navbar navbar-expand-md bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#home">Bright Tutors</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-label="Toggle menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#subjects">Subjects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="hero text-center text-white d-flex align-items-center">
+    <div class="container">
+      <h1 class="display-5 fw-bold">Better grades, less stress</h1>
+      <p class="lead">Home and online tuition for Matric and Inter students.</p>
+      <a href="#contact" class="btn btn-warning btn-lg">Book a free demo</a>
+    </div>
+  </section>
+
+  <section id="subjects" class="container py-5">
+    <h2 class="text-center mb-4">Subjects</h2>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3"><div class="card h-100 p-3 text-center">Mathematics</div></div>
+      <div class="col-sm-6 col-lg-3"><div class="card h-100 p-3 text-center">Physics</div></div>
+      <div class="col-sm-6 col-lg-3"><div class="card h-100 p-3 text-center">Chemistry</div></div>
+      <div class="col-sm-6 col-lg-3"><div class="card h-100 p-3 text-center">Computer Science</div></div>
+    </div>
+  </section>
+
+  <section id="contact" class="bg-light py-5">
+    <div class="container" style="max-width: 600px;">
+      <h2 class="text-center mb-4">Book a demo</h2>
+      <form id="demoForm" novalidate>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input id="name" class="form-control">
+          <div class="invalid-feedback">Name must be at least 3 letters.</div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input id="email" class="form-control">
+          <div class="invalid-feedback">Please enter a valid email.</div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Bootstrap modal opened by jQuery after a valid form -->
+  <div class="modal fade" id="thanksModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-4 text-center">
+        <h5>Thank you, <span id="thanksName"></span>!</h5>
+        <p class="mb-0">We will email you within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+
+  <a href="#home" id="toTop" class="btn btn-primary rounded-circle" aria-label="Back to top">↑</a>
+
+  <footer class="text-center py-3 small text-muted">© 2026 Bright Tutors (demo)</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
