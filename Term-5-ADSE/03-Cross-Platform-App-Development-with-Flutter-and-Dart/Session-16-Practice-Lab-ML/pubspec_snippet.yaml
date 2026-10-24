@@ -1,0 +1,13 @@
+# Run: flutter pub add tflite_flutter image_picker image
+dependencies:
+  flutter:
+    sdk: flutter
+  tflite_flutter: ^0.12.1
+  image_picker: ^1.2.4
+  image: ^4.12.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/model_unquant.tflite   # exported from Teachable Machine (Floating point)
+    - assets/labels.txt             # lines look like: "0 Apple"
