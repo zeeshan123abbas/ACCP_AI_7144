@@ -1,0 +1,2 @@
+# Use the recommended Dart lint rules to keep the code clean.
+include: package:lints/recommended.yaml
