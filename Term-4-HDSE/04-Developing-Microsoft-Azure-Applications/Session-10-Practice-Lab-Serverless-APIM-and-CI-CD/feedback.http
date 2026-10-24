@@ -1,0 +1,16 @@
+### Lab 10 - local tests (func start + Azurite running)
+POST http://localhost:7071/api/feedback
+Content-Type: text/plain
+
+The Azure lab was very helpful today
+
+### empty body -> 400
+POST http://localhost:7071/api/feedback
+Content-Type: text/plain
+
+### through APIM (replace values)
+POST https://apim-lab10-xxxx.azure-api.net/feedback/feedback
+Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
+Content-Type: text/plain
+
+Sent through the gateway
