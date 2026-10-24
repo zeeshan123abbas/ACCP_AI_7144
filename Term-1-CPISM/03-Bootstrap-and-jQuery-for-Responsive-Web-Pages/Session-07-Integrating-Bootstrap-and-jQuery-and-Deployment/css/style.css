@@ -1,0 +1,26 @@
+/* Push content below the fixed navbar */
+body {
+  padding-top: 56px;
+}
+
+/* Hero: full screen height with a gradient background */
+.hero {
+  min-height: 90vh;
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
+}
+
+/* Back-to-top button: fixed in the corner, hidden at first */
+#toTop {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 48px;
+  height: 48px;
+  display: none;            /* jQuery fades it in */
+}
+
+/* Highlight for the current menu item (added by jQuery) */
+.navbar .nav-link.active {
+  color: #0d6efd;
+  font-weight: 600;
+}
