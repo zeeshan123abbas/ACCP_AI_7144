@@ -1,0 +1,13 @@
+# Session 01 · robots.txt example
+# Place this file at the ROOT of your site: https://www.example.com/robots.txt
+
+# Rules for every crawler
+User-agent: *
+# Do not crawl private or useless folders
+Disallow: /admin/
+Disallow: /cart/
+# Everything else may be crawled
+Allow: /
+
+# Tell crawlers where the sitemap is (use the full URL)
+Sitemap: https://www.example.com/sitemap.xml
