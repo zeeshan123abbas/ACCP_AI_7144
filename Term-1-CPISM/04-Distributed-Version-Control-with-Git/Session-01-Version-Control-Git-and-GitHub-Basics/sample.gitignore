@@ -1,0 +1,19 @@
+# Rename this file to .gitignore and put it in the ROOT of your project.
+# Each line is a pattern. Matching files are NOT tracked by Git.
+
+# Operating system junk
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+
+# Dependencies (can be re-downloaded with npm install)
+node_modules/
+
+# Secrets - NEVER commit passwords or API keys
+.env
+
+# Log and build output
+*.log
+dist/
