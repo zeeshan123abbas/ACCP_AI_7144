@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dart Web Demo</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- main.dart.js is created by: dart compile js web/main.dart -o web/main.dart.js -->
+  <script defer src="main.dart.js"></script>
+</head>
+<body>
+  <h1>Dart in the Browser</h1>
+
+  <!-- Example 1: a counter -->
+  <section class="card">
+    <h2>1. Click Counter</h2>
+    <p>Clicks: <span id="count">0</span></p>
+    <button id="plus-btn">+1</button>
+    <button id="reset-btn" class="secondary">Reset</button>
+  </section>
+
+  <!-- Example 2: a form with validation -->
+  <section class="card">
+    <h2>2. Course Registration</h2>
+    <form id="register-form">
+      <label for="name-input">Full name</label>
+      <input id="name-input" type="text" placeholder="e.g. Ayesha Khan">
+
+      <label for="age-input">Age</label>
+      <input id="age-input" type="number" placeholder="e.g. 19">
+
+      <label for="course-select">Course</label>
+      <select id="course-select">
+        <option value="Dart">Dart Programming</option>
+        <option value="Flutter">Flutter Apps</option>
+        <option value="AI">AI Basics</option>
+      </select>
+
+      <button type="submit">Register</button>
+    </form>
+    <p id="form-message"></p>
+  </section>
+
+  <!-- Example 3: a list built from Dart data -->
+  <section class="card">
+    <h2>3. Topics This Term</h2>
+    <ul id="topic-list"></ul>
+  </section>
+</body>
+</html>
