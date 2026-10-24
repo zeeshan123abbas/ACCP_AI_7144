@@ -1,0 +1,5 @@
+.dart_tool/
+pubspec.lock
+web/*.js
+web/*.js.deps
+web/*.js.map
