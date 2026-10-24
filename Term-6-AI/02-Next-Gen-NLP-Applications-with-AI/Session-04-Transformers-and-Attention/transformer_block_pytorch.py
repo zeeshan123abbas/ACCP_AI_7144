@@ -1,51 +1,50 @@
-"""Session 04 - A complete transformer encoder block in PyTorch.
+"""Session 04 - Example 4: one transformer encoder block in PyTorch.
 
-Components: token embedding + sinusoidal positional encoding,
-multi-head self-attention, residual connections, layer normalization,
-position-wise feed-forward network.
+Block = multi-head self-attention -> add & layer norm -> feed-forward -> add & layer norm
+Setup: pip install torch
+Run:   python transformer_block_pytorch.py
 """
-import math
 import torch
 from torch import nn
 
-class PositionalEncoding(nn.Module):
-    def __init__(self, d_model, max_len=512):
-        super().__init__()
-        pe = torch.zeros(max_len, d_model)
-        pos = torch.arange(max_len).unsqueeze(1)
-        div = torch.exp(torch.arange(0, d_model, 2) * (-math.log(10000.0) / d_model))
-        pe[:, 0::2] = torch.sin(pos * div)      # even dimensions
-        pe[:, 1::2] = torch.cos(pos * div)      # odd dimensions
-        self.register_buffer("pe", pe)
+torch.manual_seed(0)
+d_model = 16        # size of each token vector
+num_heads = 4       # attention heads working in parallel
 
-    def forward(self, x):                       # x: (batch, seq, d_model)
-        return x + self.pe[: x.size(1)]
 
 class EncoderBlock(nn.Module):
-    def __init__(self, d_model=64, n_heads=4, d_ff=256, dropout=0.1):
+    def __init__(self):
         super().__init__()
-        self.attn = nn.MultiheadAttention(d_model, n_heads, dropout=dropout, batch_first=True)
-        self.norm1, self.norm2 = nn.LayerNorm(d_model), nn.LayerNorm(d_model)
-        self.ff = nn.Sequential(nn.Linear(d_model, d_ff), nn.GELU(), nn.Linear(d_ff, d_model))
-        self.drop = nn.Dropout(dropout)
+        # multi-head self-attention layer
+        self.attention = nn.MultiheadAttention(d_model, num_heads, batch_first=True)
+        # layer normalization keeps the numbers in a stable range
+        self.norm1 = nn.LayerNorm(d_model)
+        self.norm2 = nn.LayerNorm(d_model)
+        # feed-forward network: applied to each token separately
+        self.feed_forward = nn.Sequential(
+            nn.Linear(d_model, 64),
+            nn.ReLU(),
+            nn.Linear(64, d_model),
+        )
 
     def forward(self, x):
-        attn_out, weights = self.attn(x, x, x)            # self-attention: Q = K = V = x
-        x = self.norm1(x + self.drop(attn_out))           # residual + layer norm
-        x = self.norm2(x + self.drop(self.ff(x)))         # feed-forward + residual + norm
-        return x, weights
+        # 1) self-attention: every token looks at every other token (Q = K = V = x)
+        attn_output, attn_weights = self.attention(x, x, x)
+        # 2) residual connection (add the input back) + layer norm
+        x = self.norm1(x + attn_output)
+        # 3) feed-forward + residual + layer norm
+        x = self.norm2(x + self.feed_forward(x))
+        return x, attn_weights
 
-torch.manual_seed(0)
-vocab_size, d_model = 1000, 64
-embed = nn.Embedding(vocab_size, d_model)
-posenc = PositionalEncoding(d_model)
-block = EncoderBlock(d_model)
 
-token_ids = torch.tensor([[12, 45, 7, 300, 2, 99]])       # one sentence of 6 token ids
-x = posenc(embed(token_ids))
-out, attn = block(x)
-print("token ids     :", token_ids.shape)
-print("after embed+PE:", x.shape)
-print("block output  :", out.shape, "(same shape, richer context)")
-print("attention map :", attn.shape, "(averaged over heads)")
-print("parameters in one block:", sum(p.numel() for p in block.parameters()))
+# Step 1: a fake batch with 1 sentence of 5 tokens, each a 16-number vector
+tokens = torch.randn(1, 5, d_model)
+
+# Step 2: pass it through the block
+block = EncoderBlock()
+output, weights = block(tokens)
+
+print("Input shape  :", tuple(tokens.shape))
+print("Output shape :", tuple(output.shape), "-> same shape, but now each token knows its context")
+print("Attention map:", tuple(weights.shape), "-> 5 x 5 weights (averaged over heads)")
+print("Trainable parameters:", sum(p.numel() for p in block.parameters()))
