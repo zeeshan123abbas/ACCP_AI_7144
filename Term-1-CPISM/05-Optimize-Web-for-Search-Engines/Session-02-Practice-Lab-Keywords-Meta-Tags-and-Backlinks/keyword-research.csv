@@ -1,0 +1,6 @@
+keyword,intent,type,monthly_volume_estimate,difficulty_estimate,tool_used,target_url,notes
+web design course karachi,transactional,mid-tail,TOOL_VALUE,TOOL_VALUE,,/courses/web-design,main keyword for course page
+evening web design course north nazimabad,transactional,long-tail,TOOL_VALUE,TOOL_VALUE,,/courses/web-design-evening,easy win
+web design course fee karachi,commercial,long-tail,TOOL_VALUE,TOOL_VALUE,,/courses/web-design-evening/fee,
+what is responsive web design,informational,long-tail,TOOL_VALUE,TOOL_VALUE,,/blog/what-is-responsive-web-design,blog post idea
+html css course for beginners,commercial,mid-tail,TOOL_VALUE,TOOL_VALUE,,/courses/web-design,supporting keyword
