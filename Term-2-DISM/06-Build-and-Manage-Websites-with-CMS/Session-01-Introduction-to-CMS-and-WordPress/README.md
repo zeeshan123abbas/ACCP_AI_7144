@@ -67,7 +67,7 @@ Block editor (Gutenberg), Site Editor for block themes, media library, menus, wi
 
 ## 🧪 Lab Practice
 
-1. Fill the CMS comparison worksheet below for WordPress, Joomla and Drupal (installation effort, learning curve, extensions, typical users, cost).
+1. Fill the CMS comparison worksheet in [`cms-comparison-template.md`](./cms-comparison-template.md) (in this session folder) for WordPress, Joomla and Drupal (installation effort, learning curve, extensions, typical users, cost).
 2. Explore the demo of three WordPress sites in different categories (blog, shop, portfolio) and note which features you see (menus, search, forms, galleries).
 3. On https://wordpress.org/showcase/ find two famous sites built with WordPress.
 4. Write a one-paragraph recommendation for a local bakery: WordPress.com, WordPress.org or Shopify, and why.
