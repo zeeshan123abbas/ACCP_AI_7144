@@ -1,49 +1,39 @@
-"""Session 04 - Scaled dot-product attention and multi-head attention in NumPy.
+"""Session 04 - Example 1: scaled dot-product attention, step by step in NumPy.
 
-Attention(Q, K, V) = softmax(Q K^T / sqrt(d_k)) V
+Formula:  Attention(Q, K, V) = softmax(Q x K^T / sqrt(d)) x V
+Run: python attention_numpy.py   (needs only numpy)
 """
 import numpy as np
 
-np.random.seed(0)
-tokens = ["the", "cat", "sat", "on", "mat"]
-seq_len, d_model, n_heads = len(tokens), 8, 2
-d_k = d_model // n_heads
+np.random.seed(0)                       # same random numbers every run
+tokens = ["the", "cat", "sat"]
+d = 4                                   # size of each vector
 
-X = np.random.randn(seq_len, d_model)          # pretend these are token embeddings
+# Step 1: pretend each token already has an embedding vector (3 tokens x 4 numbers)
+X = np.random.randn(len(tokens), d)
 
-def softmax(x, axis=-1):
-    e = np.exp(x - x.max(axis=axis, keepdims=True))
-    return e / e.sum(axis=axis, keepdims=True)
+# Step 2: make Query, Key and Value vectors with three weight matrices
+W_query = np.random.randn(d, d)
+W_key = np.random.randn(d, d)
+W_value = np.random.randn(d, d)
+Q = X @ W_query        # what each token is looking for
+K = X @ W_key          # what each token offers
+V = X @ W_value        # the information each token passes on
 
-def scaled_dot_product_attention(Q, K, V, mask=None):
-    scores = Q @ K.T / np.sqrt(Q.shape[-1])     # similarity of every query with every key
-    if mask is not None:
-        scores = np.where(mask, scores, -1e9)   # block forbidden positions
-    weights = softmax(scores)                   # each row sums to 1
-    return weights @ V, weights
+# Step 3: score how well every query matches every key (dot product)
+scores = Q @ K.T
 
-# ----- single head -----
-Wq, Wk, Wv = (np.random.randn(d_model, d_k) for _ in range(3))
-out, w = scaled_dot_product_attention(X @ Wq, X @ Wk, X @ Wv)
-print("Attention weights (row = query token, columns = keys):")
-print("       " + " ".join(f"{t:>5}" for t in tokens))
-for t, row in zip(tokens, w):
-    print(f"{t:>6} " + " ".join(f"{v:5.2f}" for v in row))
+# Step 4: scale the scores so they do not get too large
+scores = scores / np.sqrt(d)
 
-# ----- causal mask used by decoder-only models (GPT) -----
-causal = np.tril(np.ones((seq_len, seq_len), dtype=bool))
-_, w_causal = scaled_dot_product_attention(X @ Wq, X @ Wk, X @ Wv, mask=causal)
-print("\nCausal weights for 'sat' (cannot see the future):", np.round(w_causal[2], 2))
+# Step 5: softmax turns each row into weights that add up to 1
+weights = np.exp(scores) / np.exp(scores).sum(axis=1, keepdims=True)
 
-# ----- multi-head attention -----
-def multi_head_attention(X, n_heads):
-    heads = []
-    for h in range(n_heads):
-        Wq, Wk, Wv = (np.random.randn(d_model, d_k) for _ in range(3))
-        head_out, _ = scaled_dot_product_attention(X @ Wq, X @ Wk, X @ Wv)
-        heads.append(head_out)
-    Wo = np.random.randn(n_heads * d_k, d_model)
-    return np.concatenate(heads, axis=-1) @ Wo   # concat heads, project back
+# Step 6: each output is a weighted mix of the Value vectors
+output = weights @ V
 
-mha = multi_head_attention(X, n_heads)
-print("\nInput shape:", X.shape, "-> multi-head output shape:", mha.shape)
+print("Attention weights (row = token asking, column = token it looks at):")
+print("        " + "  ".join(f"{t:>5}" for t in tokens))
+for token, row in zip(tokens, weights):
+    print(f"{token:>6}  " + "  ".join(f"{w:5.2f}" for w in row))
+print("\nOutput shape:", output.shape, "(one new vector per token)")
