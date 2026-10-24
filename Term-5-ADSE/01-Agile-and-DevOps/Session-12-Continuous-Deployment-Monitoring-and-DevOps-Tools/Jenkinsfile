@@ -1,0 +1,35 @@
+// Declarative Jenkins pipeline for a Python web service
+pipeline {
+    agent any
+
+    environment {
+        IMAGE = "zeeshan/grade-service:${env.BUILD_NUMBER}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps { checkout scm }
+        }
+        stage('Test') {
+            steps { sh 'python3 -m unittest -v' }
+        }
+        stage('Build image') {
+            steps { sh "docker build -t ${IMAGE} ." }
+        }
+        stage('Deploy to staging') {
+            steps { sh "docker rm -f grade-staging || true && docker run -d --name grade-staging -p 8081:8000 ${IMAGE}" }
+        }
+        stage('Smoke test') {
+            steps { sh 'sleep 3 && curl -fsS http://localhost:8081/health' }
+        }
+        stage('Deploy to production') {
+            when { branch 'main' }
+            steps { sh "docker rm -f grade-prod || true && docker run -d --name grade-prod -p 8000:8000 ${IMAGE}" }
+        }
+    }
+
+    post {
+        failure { echo 'Pipeline failed - check the stage logs above.' }
+        success { echo "Deployed ${IMAGE}" }
+    }
+}
