@@ -1,0 +1,22 @@
+<!-- Session 09 - Example 5: an API Management policy (paste in the API's Policy editor) -->
+<policies>
+    <inbound>
+        <base />
+        <!-- allow at most 10 calls per 60 seconds per subscription key -->
+        <rate-limit calls="10" renewal-period="60" />
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+        <!-- hide technology details from callers -->
+        <set-header name="X-Powered-By" exists-action="delete" />
+        <set-header name="X-Served-By" exists-action="override">
+            <value>ACCP API Gateway</value>
+        </set-header>
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>
