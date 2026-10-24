@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- Session 05 · Google Analytics 4 tag + one custom event. Replace G-XXXXXXXXXX with your Measurement ID. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GA4 Demo | Karachi Tech Hub</title>
+
+  <!-- Step 1: Load the Google tag library (async = does not block the page) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    // Step 2: Create the data layer (a list GA reads from)
+    window.dataLayer = window.dataLayer || [];
+
+    // Step 3: Helper function that pushes commands into the data layer
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    // Step 4: Start GA4 and send the first page_view automatically
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <h1>GA4 Demo Page</h1>
+  <p>Open GA4 → Reports → Realtime, then click the button below.</p>
+
+  <a id="whatsappButton" href="https://wa.me/923000000000">Chat on WhatsApp</a>
+
+  <script>
+    // Step 5: Send a custom event when the WhatsApp button is clicked
+    const whatsappButton = document.getElementById('whatsappButton');
+
+    whatsappButton.addEventListener('click', function () {
+      gtag('event', 'whatsapp_click', {
+        button_location: 'demo_page'
+      });
+    });
+    // Step 6: In GA4 Admin → Events, mark "whatsapp_click" as a key event
+  </script>
+</body>
+</html>
