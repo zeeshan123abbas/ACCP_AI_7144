@@ -1,0 +1,16 @@
+# pubspec.yaml (only the important parts for this session)
+name: navigation_demo
+description: Session 08 navigation, go_router and controllers examples.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  go_router: ^14.8.1   # 'flutter pub add go_router' installs the latest version
+
+flutter:
+  uses-material-design: true
