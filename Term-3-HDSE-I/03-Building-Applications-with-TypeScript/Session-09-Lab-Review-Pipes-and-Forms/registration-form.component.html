@@ -1,0 +1,42 @@
+<!-- registration-form.component.html -->
+<h2>Workshop Registration</h2>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+  <input formControlName="name" placeholder="Full name" />
+  @if (f.name.touched && f.name.invalid) {
+    <small>Name needs at least 3 letters.</small>
+  }
+
+  <input formControlName="phone" placeholder="03XXXXXXXXX" />
+  @if (f.phone.touched && f.phone.hasError('pkPhone')) {
+    <small>Use the format 03XXXXXXXXX.</small>
+  }
+
+  <select formControlName="workshop">
+    <option>Angular Basics</option>
+    <option>TypeScript Deep Dive</option>
+    <option>Material Design</option>
+  </select>
+
+  <input type="number" formControlName="seats" />
+  @if (f.seats.invalid) {
+    <small>Seats must be between 1 and 5.</small>
+  }
+
+  <p>Total: {{ f.seats.value * seatPrice | currency: 'PKR' : 'symbol' : '1.0-0' }}</p>
+  <button type="submit">Register</button>
+</form>
+
+<h3>Registrations ({{ registrations.length }})</h3>
+<table>
+  <tr><th>Name</th><th>Phone</th><th>Workshop</th><th>Seats</th><th>When</th></tr>
+  @for (r of registrations; track $index) {
+    <tr>
+      <td>{{ r.name | titlecase }}</td>
+      <td>{{ r.phone | maskPhone }}</td>
+      <td>{{ r.workshop }}</td>
+      <td>{{ r.seats }}</td>
+      <td>{{ r.date | date: 'short' }}</td>
+    </tr>
+  }
+</table>
