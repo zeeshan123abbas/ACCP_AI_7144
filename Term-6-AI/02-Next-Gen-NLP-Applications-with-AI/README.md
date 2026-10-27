@@ -103,6 +103,6 @@ Deliverables: source code with a `README.md`, a `requirements.txt`, 10 test ques
 
 ---
 
-[🏠 Term Home](../README.md)
+[🏠 Term Home](../README.md) · [Term 6 Capstone ➡](../Capstone/README.md)
 
 Prepared by Zeeshan Abbas · Aptech Learning North Nazimabad
