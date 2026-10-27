@@ -1,0 +1,9 @@
+[
+  {"order_id": 1, "date": "2026-03-01", "city": "Karachi", "product": "Headphones", "qty": 2, "price": 3500},
+  {"order_id": 2, "date": "2026-03-01", "city": "lahore", "product": "Charger", "qty": 1, "price": 1200},
+  {"order_id": 3, "date": "2026-03-02", "city": "Islamabad", "product": "Power Bank", "qty": null, "price": 4500},
+  {"order_id": 4, "date": "2026-03-03", "city": " Karachi", "product": "Charger", "qty": 3, "price": 1200},
+  {"order_id": 5, "date": "2026-03-04", "city": "Lahore", "product": "Headphones", "qty": 1, "price": 3500},
+  {"order_id": 5, "date": "2026-03-04", "city": "Lahore", "product": "Headphones", "qty": 1, "price": 3500},
+  {"order_id": 6, "date": "2026-03-05", "city": "Karachi", "product": "Smart Watch", "qty": 1, "price": 9000}
+]
