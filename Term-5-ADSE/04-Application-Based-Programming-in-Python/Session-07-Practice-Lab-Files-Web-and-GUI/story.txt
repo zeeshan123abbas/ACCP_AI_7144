@@ -1,0 +1,3 @@
+Karachi is the largest city of Pakistan. Karachi is also a busy port city.
+Students in Karachi learn Python to build apps, analyse data and train models.
+Python is easy to read, and Python has a huge community.
