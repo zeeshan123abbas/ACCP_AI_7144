@@ -1,0 +1,7 @@
+order_id,date,city,product,qty,price
+101,02/03/2026,KARACHI,Charger,2,"1,200"
+102,03/03/2026,Lahore,Power Bank,1,"4,500"
+103,04/03/2026,Islamabad,Smart Watch,,"9,000"
+104,05/03/2026,Karachi,Headphones,4,"3,500"
+105,06/03/2026,Islamabad,Charger,-2,"1,200"
+106,06/03/2026,Karachi,Power Bank,2,"4,500"
