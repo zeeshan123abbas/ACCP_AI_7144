@@ -1,0 +1,7 @@
+date,branch,category,item,quantity,unit_price,revenue
+2026-01-03,Gulshan,Bakery,Cake,4,1200,4800
+2026-01-04,Saddar,Bakery,Bread,25,120,3000
+2026-01-05,Nazimabad,Bakery,Cake,2,1200,2400
+2026-01-07,Gulshan,Bakery,Bread,18,120,2160
+2026-01-08,Saddar,Bakery,Cake,3,1200,3600
+2026-01-10,Nazimabad,Bakery,Bread,22,120,2640
