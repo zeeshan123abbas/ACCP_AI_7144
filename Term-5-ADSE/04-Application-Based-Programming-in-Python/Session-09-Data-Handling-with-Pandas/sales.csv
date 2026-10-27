@@ -1,0 +1,12 @@
+order_id,date,city,product,quantity,price,customer
+1,2026-01-05,Karachi,Laptop,1,150000, ali khan 
+2,2026-01-06,Lahore,Mouse,3,1500,SARA AHMED
+3,2026-01-06,Karachi,Keyboard,2,3500,usman tariq
+4,2026-01-07,Islamabad,Laptop,1,155000,Hira Noor
+5,2026-01-08,Karachi,Mouse,,1500,ayesha malik
+6,2026-01-08,Lahore,Monitor,2,42000,Bilal Raza
+7,2026-01-09,Islamabad,Keyboard,1,,zara ali
+8,2026-01-10,Karachi,Monitor,1,41000,Hamza Shah
+9,2026-01-10,Lahore,Laptop,2,149000,Fatima Iqbal
+9,2026-01-10,Lahore,Laptop,2,149000,Fatima Iqbal
+10,2026-01-11,Karachi,Mouse,5,1400,Omar Farooq
