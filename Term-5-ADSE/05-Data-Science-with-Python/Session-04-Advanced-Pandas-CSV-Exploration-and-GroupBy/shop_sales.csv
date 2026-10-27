@@ -1,0 +1,17 @@
+date,branch,category,item,quantity,unit_price
+2026-01-03,Gulshan,Bakery,Cake,4,1200
+2026-01-03,Gulshan,Drinks,Juice,10,150
+2026-01-04,Saddar,Bakery,Bread,25,120
+2026-01-04,Saddar,Snacks,Chips,30,60
+2026-01-05,Nazimabad,Drinks,Tea,40,80
+2026-01-05,Nazimabad,Bakery,Cake,2,1200
+2026-01-06,Gulshan,Snacks,Samosa,50,40
+2026-01-06,Saddar,Drinks,Juice,12,150
+2026-01-07,Nazimabad,Snacks,Chips,20,60
+2026-01-07,Gulshan,Bakery,Bread,18,120
+2026-01-08,Saddar,Bakery,Cake,3,1200
+2026-01-08,Nazimabad,Drinks,Juice,8,150
+2026-01-09,Gulshan,Drinks,Tea,35,80
+2026-01-09,Saddar,Snacks,Samosa,60,40
+2026-01-10,Nazimabad,Bakery,Bread,22,120
+2026-01-10,Gulshan,Snacks,Chips,15,60
