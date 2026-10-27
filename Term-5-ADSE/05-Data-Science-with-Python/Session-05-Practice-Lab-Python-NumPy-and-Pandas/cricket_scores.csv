@@ -1,0 +1,13 @@
+match,date,player,team,runs,balls,fours,sixes
+1,2026-02-01,Babar,Karachi Kings,72,51,8,2
+1,2026-02-01,Rizwan,Karachi Kings,45,38,4,1
+1,2026-02-01,Fakhar,Lahore Qalandars,88,55,9,4
+1,2026-02-01,Shafique,Lahore Qalandars,12,15,1,0
+2,2026-02-04,Babar,Karachi Kings,15,18,2,0
+2,2026-02-04,Rizwan,Karachi Kings,67,49,6,2
+2,2026-02-04,Fakhar,Lahore Qalandars,34,29,3,2
+2,2026-02-04,Shafique,Lahore Qalandars,58,40,5,1
+3,2026-02-08,Babar,Karachi Kings,101,60,11,3
+3,2026-02-08,Rizwan,Karachi Kings,22,20,2,0
+3,2026-02-08,Fakhar,Lahore Qalandars,5,7,1,0
+3,2026-02-08,Shafique,Lahore Qalandars,77,52,7,3
